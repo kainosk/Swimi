@@ -10,6 +10,10 @@
 		2AB134AE234742CB005D79A5 /* SwiftyMIDIParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */; };
 		2AB134B3234742CB005D79A5 /* SwiftyMIDIParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB134B2234742CB005D79A5 /* SwiftyMIDIParserTests.swift */; };
 		2AB134B5234742CB005D79A5 /* SwiftyMIDIParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2AB134D223479913005D79A5 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134D023479913005D79A5 /* Nimble.framework */; };
+		2AB134D323479913005D79A5 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134D123479913005D79A5 /* Quick.framework */; };
+		2AB134D723479ACF005D79A5 /* Nimble.framework in Framework */ = {isa = PBXBuildFile; fileRef = 2AB134D023479913005D79A5 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2AB134D823479ACF005D79A5 /* Quick.framework in Framework */ = {isa = PBXBuildFile; fileRef = 2AB134D123479913005D79A5 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,6 +26,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2AB134D623479AC0005D79A5 /* Framework */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2AB134D723479ACF005D79A5 /* Nimble.framework in Framework */,
+				2AB134D823479ACF005D79A5 /* Quick.framework in Framework */,
+			);
+			name = Framework;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyMIDIParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyMIDIParser.h; sourceTree = "<group>"; };
@@ -29,6 +48,8 @@
 		2AB134AD234742CB005D79A5 /* SwiftyMIDIParserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyMIDIParserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB134B2234742CB005D79A5 /* SwiftyMIDIParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyMIDIParserTests.swift; sourceTree = "<group>"; };
 		2AB134B4234742CB005D79A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AB134D023479913005D79A5 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		2AB134D123479913005D79A5 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +65,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AB134AE234742CB005D79A5 /* SwiftyMIDIParser.framework in Frameworks */,
+				2AB134D223479913005D79A5 /* Nimble.framework in Frameworks */,
+				2AB134D323479913005D79A5 /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +79,7 @@
 				2AB134A6234742CB005D79A5 /* SwiftyMIDIParser */,
 				2AB134B1234742CB005D79A5 /* SwiftyMIDIParserTests */,
 				2AB134A5234742CB005D79A5 /* Products */,
+				2AB134CF23479913005D79A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +108,15 @@
 				2AB134B4234742CB005D79A5 /* Info.plist */,
 			);
 			path = SwiftyMIDIParserTests;
+			sourceTree = "<group>";
+		};
+		2AB134CF23479913005D79A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2AB134D023479913005D79A5 /* Nimble.framework */,
+				2AB134D123479913005D79A5 /* Quick.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +158,7 @@
 				2AB134A9234742CB005D79A5 /* Sources */,
 				2AB134AA234742CB005D79A5 /* Frameworks */,
 				2AB134AB234742CB005D79A5 /* Resources */,
+				2AB134D623479AC0005D79A5 /* Framework */,
 			);
 			buildRules = (
 			);
@@ -148,6 +182,7 @@
 				TargetAttributes = {
 					2AB134A3234742CB005D79A5 = {
 						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1100;
 					};
 					2AB134AC234742CB005D79A5 = {
 						CreatedOnToolsVersion = 11.0;
@@ -340,6 +375,7 @@
 		2AB134B9234742CB005D79A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = LMSP24EB78;
@@ -356,6 +392,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kainosk.SwiftyMIDIParser;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -364,6 +401,7 @@
 		2AB134BA234742CB005D79A5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = LMSP24EB78;
@@ -390,6 +428,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LMSP24EB78;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SwiftyMIDIParserTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -408,6 +450,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LMSP24EB78;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SwiftyMIDIParserTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
