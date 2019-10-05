@@ -20,6 +20,7 @@ class ParserSpec: QuickSpec {
         var polyphonicKeyPressures: [PolyphonicKeyPressure]!
         var controlChanges: [ControlChange]!
         var programChanges: [ProgramChange]!
+        var channelPressures: [ChannelPressure]!
         var systemExclusives: [SystemExclusive]!
         
         beforeEach {
@@ -30,6 +31,7 @@ class ParserSpec: QuickSpec {
             polyphonicKeyPressures = []
             controlChanges = []
             programChanges = []
+            channelPressures = []
             systemExclusives = []
             
             subject.notifier.noteOff = { noteOffs.append($0) }
@@ -37,6 +39,7 @@ class ParserSpec: QuickSpec {
             subject.notifier.polyphonicKeyPressure = { polyphonicKeyPressures.append($0) }
             subject.notifier.controlChange = { controlChanges.append($0) }
             subject.notifier.programChange = { programChanges.append($0) }
+            subject.notifier.channelPressure = { channelPressures.append($0) }
             subject.notifier.systemExclusive = { systemExclusives.append($0) }
         }
         
@@ -417,6 +420,69 @@ class ParserSpec: QuickSpec {
                         subject.input(data: [0xC5, 0])
                         expect(programChanges).to(equal([
                             ProgramChange(channel: 5,  program: 0)
+                        ]))
+                    }
+                }
+            }
+        }
+        
+        // MARK: Channel Pressure
+        describe("ChannelPressure") {
+            it("parse messages even if it contains RunningStatus") {
+                let data: [UInt8] = [
+                    0xD5,   1,
+                    0xD5,   3,
+                            7,       // Running Status
+                           15,       // Running Status
+                    0xD5,  31,
+                    0xF0,  11, 0xF7, // System Exclusive
+                    0xD5,  63,
+                          127,       // Running Status
+                    0xF0,  22, 0xF7, // System Exclusive
+                    0xD5,   0,
+                ]
+                subject.input(data: data)
+                expect(channelPressures).to(equal([
+                    ChannelPressure(channel: 5,  pressure:   1),
+                    ChannelPressure(channel: 5,  pressure:   3),
+                    ChannelPressure(channel: 5,  pressure:   7),
+                    ChannelPressure(channel: 5,  pressure:  15),
+                    ChannelPressure(channel: 5,  pressure:  31),
+                    ChannelPressure(channel: 5,  pressure:  63),
+                    ChannelPressure(channel: 5,  pressure: 127),
+                    ChannelPressure(channel: 5,  pressure:   0),
+                ]))
+            }
+            describe("range") {
+                context("channel maximum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xDF, 64])
+                        expect(channelPressures).to(equal([
+                            ChannelPressure(channel: 15,  pressure: 64)
+                        ]))
+                    }
+                }
+                context("channel minimum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xD0, 64])
+                        expect(channelPressures).to(equal([
+                            ChannelPressure(channel: 0,  pressure: 64)
+                        ]))
+                    }
+                }
+                context("pressure maximum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xD5, 127])
+                        expect(channelPressures).to(equal([
+                            ChannelPressure(channel: 5,  pressure: 127)
+                        ]))
+                    }
+                }
+                context("pressure minimum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xD5, 0])
+                        expect(channelPressures).to(equal([
+                            ChannelPressure(channel: 5,  pressure: 0)
                         ]))
                     }
                 }
