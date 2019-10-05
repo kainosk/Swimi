@@ -31,6 +31,11 @@ class ParserSpec: QuickSpec {
         var timingClocks: [TimingClock]!
         var undefinedSystemRealTimeMessage1s: [UndefinedSystemRealTimeMessage1]!
         var undefinedSystemRealTimeMessage2s: [UndefinedSystemRealTimeMessage2]!
+        var starts: [Start]!
+        var continues: [Continue]!
+        var stops: [Stop]!
+        var activeSensings: [ActiveSensing]!
+        var systemResets: [SystemReset]!
         var systemExclusives: [SystemExclusive]!
         
         beforeEach {
@@ -52,6 +57,11 @@ class ParserSpec: QuickSpec {
             timingClocks = []
             undefinedSystemRealTimeMessage1s = []
             undefinedSystemRealTimeMessage2s = []
+            starts = []
+            continues = []
+            stops = []
+            activeSensings = []
+            systemResets = []
             systemExclusives = []
             
             subject.notifier.noteOff = { noteOffs.append($0) }
@@ -70,6 +80,11 @@ class ParserSpec: QuickSpec {
             subject.notifier.timingClock = { timingClocks.append($0) }
             subject.notifier.undefinedSystemRealTimeMessage1 = { undefinedSystemRealTimeMessage1s.append($0) }
             subject.notifier.undefinedSystemRealTimeMessage2 = { undefinedSystemRealTimeMessage2s.append($0) }
+            subject.notifier.start = { starts.append($0) }
+            subject.notifier.continue = { continues.append($0) }
+            subject.notifier.stop = { stops.append($0) }
+            subject.notifier.activeSensing = { activeSensings.append($0) }
+            subject.notifier.systemReset = { systemResets.append($0) }
             subject.notifier.systemExclusive = { systemExclusives.append($0) }
         }
         
@@ -900,6 +915,116 @@ class ParserSpec: QuickSpec {
                     UndefinedSystemRealTimeMessage2(),
                     UndefinedSystemRealTimeMessage2(),
                     UndefinedSystemRealTimeMessage2(),
+                ]))
+            }
+        }
+        
+        // MARK: Start
+        describe("Start") {
+            it("parse messages") {
+                let data: [UInt8] = [
+                    0xFA,
+                    0xFA,
+                    0xF3,   0,
+                    0xFA,
+                    0xF3,   0,
+                    0,
+                    0xFA
+                ]
+                subject.input(data: data)
+                expect(starts).to(equal([
+                    Start(),
+                    Start(),
+                    Start(),
+                    Start(),
+                ]))
+            }
+        }
+        
+        // MARK: Continue
+        describe("Continue") {
+            it("parse messages") {
+                let data: [UInt8] = [
+                    0xFB,
+                    0xFB,
+                    0xF3,   0,
+                    0xFB,
+                    0xF3,   0,
+                    0,
+                    0xFB
+                ]
+                subject.input(data: data)
+                expect(continues).to(equal([
+                    Continue(),
+                    Continue(),
+                    Continue(),
+                    Continue(),
+                ]))
+            }
+        }
+        
+        // MARK: Stop
+        describe("Stop") {
+            it("parse messages") {
+                let data: [UInt8] = [
+                    0xFC,
+                    0xFC,
+                    0xF3,   0,
+                    0xFC,
+                    0xF3,   0,
+                    0,
+                    0xFC
+                ]
+                subject.input(data: data)
+                expect(stops).to(equal([
+                    Stop(),
+                    Stop(),
+                    Stop(),
+                    Stop(),
+                ]))
+            }
+        }
+        
+        // MARK: ActiveSensing
+        describe("ActiveSensing") {
+            it("parse messages") {
+                let data: [UInt8] = [
+                    0xFE,
+                    0xFE,
+                    0xF3,   0,
+                    0xFE,
+                    0xF3,   0,
+                    0,
+                    0xFE
+                ]
+                subject.input(data: data)
+                expect(activeSensings).to(equal([
+                    ActiveSensing(),
+                    ActiveSensing(),
+                    ActiveSensing(),
+                    ActiveSensing(),
+                ]))
+            }
+        }
+        
+        // MARK: SystemReset
+        describe("SystemReset") {
+            it("parse messages") {
+                let data: [UInt8] = [
+                    0xFF,
+                    0xFF,
+                    0xF3,   0,
+                    0xFF,
+                    0xF3,   0,
+                    0,
+                    0xFF
+                ]
+                subject.input(data: data)
+                expect(systemResets).to(equal([
+                    SystemReset(),
+                    SystemReset(),
+                    SystemReset(),
+                    SystemReset(),
                 ]))
             }
         }

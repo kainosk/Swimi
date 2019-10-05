@@ -25,6 +25,11 @@
 		2A37D2622348E66E00DF807A /* TimingClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D2612348E66E00DF807A /* TimingClock.swift */; };
 		2A37D2642348E75B00DF807A /* UndefinedSystemRealTimeMessage1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D2632348E75B00DF807A /* UndefinedSystemRealTimeMessage1.swift */; };
 		2A37D2662348E77F00DF807A /* UndefinedSystemRealTimeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D2652348E77F00DF807A /* UndefinedSystemRealTimeMessage.swift */; };
+		2A37D2682348E8E200DF807A /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D2672348E8E200DF807A /* Start.swift */; };
+		2A37D26A2348E90A00DF807A /* Continue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D2692348E90A00DF807A /* Continue.swift */; };
+		2A37D26C2348E92200DF807A /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D26B2348E92200DF807A /* Stop.swift */; };
+		2A37D26E2348E94300DF807A /* ActiveSensing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D26D2348E94300DF807A /* ActiveSensing.swift */; };
+		2A37D2702348E96200DF807A /* SystemReset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D26F2348E96200DF807A /* SystemReset.swift */; };
 		2AB134AE234742CB005D79A5 /* SwiftyMIDIParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */; };
 		2AB134B5234742CB005D79A5 /* SwiftyMIDIParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2AB134D223479913005D79A5 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134D023479913005D79A5 /* Nimble.framework */; };
@@ -95,6 +100,11 @@
 		2A37D2612348E66E00DF807A /* TimingClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingClock.swift; sourceTree = "<group>"; };
 		2A37D2632348E75B00DF807A /* UndefinedSystemRealTimeMessage1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndefinedSystemRealTimeMessage1.swift; sourceTree = "<group>"; };
 		2A37D2652348E77F00DF807A /* UndefinedSystemRealTimeMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndefinedSystemRealTimeMessage.swift; sourceTree = "<group>"; };
+		2A37D2672348E8E200DF807A /* Start.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Start.swift; sourceTree = "<group>"; };
+		2A37D2692348E90A00DF807A /* Continue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Continue.swift; sourceTree = "<group>"; };
+		2A37D26B2348E92200DF807A /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
+		2A37D26D2348E94300DF807A /* ActiveSensing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSensing.swift; sourceTree = "<group>"; };
+		2A37D26F2348E96200DF807A /* SystemReset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemReset.swift; sourceTree = "<group>"; };
 		2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyMIDIParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyMIDIParser.h; sourceTree = "<group>"; };
 		2AB134A8234742CB005D79A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -176,6 +186,11 @@
 				2A37D2612348E66E00DF807A /* TimingClock.swift */,
 				2A37D2632348E75B00DF807A /* UndefinedSystemRealTimeMessage1.swift */,
 				2A37D2652348E77F00DF807A /* UndefinedSystemRealTimeMessage.swift */,
+				2A37D2672348E8E200DF807A /* Start.swift */,
+				2A37D2692348E90A00DF807A /* Continue.swift */,
+				2A37D26B2348E92200DF807A /* Stop.swift */,
+				2A37D26D2348E94300DF807A /* ActiveSensing.swift */,
+				2A37D26F2348E96200DF807A /* SystemReset.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -384,15 +399,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A37D26A2348E90A00DF807A /* Continue.swift in Sources */,
+				2A37D26E2348E94300DF807A /* ActiveSensing.swift in Sources */,
 				2AC9056C2348A42300EDAEDC /* TimeCodeQuarterFrameMessageType.swift in Sources */,
 				2A37D25E2348E18800DF807A /* UndefinedSystemCommonMessage2.swift in Sources */,
+				2A37D2682348E8E200DF807A /* Start.swift in Sources */,
 				2A180EB223487ABC00ED29EA /* PolyphonicKeyPressure.swift in Sources */,
 				2AB134DE2347A53A005D79A5 /* NoteOn.swift in Sources */,
 				2A180EB0234875A400ED29EA /* NoteOff.swift in Sources */,
 				2AB134E8234847FE005D79A5 /* DataSize.swift in Sources */,
+				2A37D2702348E96200DF807A /* SystemReset.swift in Sources */,
 				2A180EB823488E2D00ED29EA /* ProgramChange.swift in Sources */,
 				2A37D2602348E56F00DF807A /* TuneRequest.swift in Sources */,
 				2A37D2622348E66E00DF807A /* TimingClock.swift in Sources */,
+				2A37D26C2348E92200DF807A /* Stop.swift in Sources */,
 				2AB134E22347A579005D79A5 /* SystemExclusive.swift in Sources */,
 				2AB134EA234860CC005D79A5 /* Notifier.swift in Sources */,
 				2AB134EC23486152005D79A5 /* Segmentator.swift in Sources */,
