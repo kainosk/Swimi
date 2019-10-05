@@ -23,6 +23,8 @@
 		2A37D25E2348E18800DF807A /* UndefinedSystemCommonMessage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D25D2348E18800DF807A /* UndefinedSystemCommonMessage2.swift */; };
 		2A37D2602348E56F00DF807A /* TuneRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D25F2348E56F00DF807A /* TuneRequest.swift */; };
 		2A37D2622348E66E00DF807A /* TimingClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D2612348E66E00DF807A /* TimingClock.swift */; };
+		2A37D2642348E75B00DF807A /* UndefinedSystemRealTimeMessage1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D2632348E75B00DF807A /* UndefinedSystemRealTimeMessage1.swift */; };
+		2A37D2662348E77F00DF807A /* UndefinedSystemRealTimeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D2652348E77F00DF807A /* UndefinedSystemRealTimeMessage.swift */; };
 		2AB134AE234742CB005D79A5 /* SwiftyMIDIParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */; };
 		2AB134B5234742CB005D79A5 /* SwiftyMIDIParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2AB134D223479913005D79A5 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134D023479913005D79A5 /* Nimble.framework */; };
@@ -91,6 +93,8 @@
 		2A37D25D2348E18800DF807A /* UndefinedSystemCommonMessage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndefinedSystemCommonMessage2.swift; sourceTree = "<group>"; };
 		2A37D25F2348E56F00DF807A /* TuneRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuneRequest.swift; sourceTree = "<group>"; };
 		2A37D2612348E66E00DF807A /* TimingClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingClock.swift; sourceTree = "<group>"; };
+		2A37D2632348E75B00DF807A /* UndefinedSystemRealTimeMessage1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndefinedSystemRealTimeMessage1.swift; sourceTree = "<group>"; };
+		2A37D2652348E77F00DF807A /* UndefinedSystemRealTimeMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndefinedSystemRealTimeMessage.swift; sourceTree = "<group>"; };
 		2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyMIDIParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyMIDIParser.h; sourceTree = "<group>"; };
 		2AB134A8234742CB005D79A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -170,6 +174,8 @@
 				2A37D25D2348E18800DF807A /* UndefinedSystemCommonMessage2.swift */,
 				2A37D25F2348E56F00DF807A /* TuneRequest.swift */,
 				2A37D2612348E66E00DF807A /* TimingClock.swift */,
+				2A37D2632348E75B00DF807A /* UndefinedSystemRealTimeMessage1.swift */,
+				2A37D2652348E77F00DF807A /* UndefinedSystemRealTimeMessage.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -398,7 +404,9 @@
 				2A37D2582348DD9400DF807A /* SongPositionPointer.swift in Sources */,
 				2A37D25A2348DF5200DF807A /* SongSelect.swift in Sources */,
 				2AC9056A2348A04E00EDAEDC /* TimeCodeQuarterFrame.swift in Sources */,
+				2A37D2642348E75B00DF807A /* UndefinedSystemRealTimeMessage1.swift in Sources */,
 				2A180EBA2348967100ED29EA /* ChannelPressure.swift in Sources */,
+				2A37D2662348E77F00DF807A /* UndefinedSystemRealTimeMessage.swift in Sources */,
 				2A180EB423487D0C00ED29EA /* ControlChange.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

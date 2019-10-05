@@ -23,6 +23,8 @@ public class Notifier {
     public var undefinedSystemCommonMessage2: ((UndefinedSystemCommonMessage2) -> Void)?
     public var tuneRequest: ((TuneRequest) -> Void)?
     public var timingClock: ((TimingClock) -> Void)?
+    public var undefinedSystemRealTimeMessage1: ((UndefinedSystemRealTimeMessage1) -> Void)?
+    public var undefinedSystemRealTimeMessage2: ((UndefinedSystemRealTimeMessage2) -> Void)?
     public var systemExclusive: ((SystemExclusive) -> Void)?
 
     func notify(messageData: [UInt8]) {
@@ -60,7 +62,7 @@ public class Notifier {
         case .timingClock:
             timingClock?(TimingClock.fromData(messageData))
         case .undefinedSystemRealTimeMessage1:
-            fatalError()
+            undefinedSystemRealTimeMessage1?(UndefinedSystemRealTimeMessage1.fromData(messageData))
         case .start:
             fatalError()
         case .continue:
@@ -68,7 +70,7 @@ public class Notifier {
         case .stop:
             fatalError()
         case .undefinedSystemRealTimeMessage2:
-            fatalError()
+            undefinedSystemRealTimeMessage2?(UndefinedSystemRealTimeMessage2.fromData(messageData))
         case .activeSensing:
             fatalError()
         case .systemReset:

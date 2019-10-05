@@ -29,6 +29,8 @@ class ParserSpec: QuickSpec {
         var undefinedSystemCommonMessage2s: [UndefinedSystemCommonMessage2]!
         var tuneRequests: [TuneRequest]!
         var timingClocks: [TimingClock]!
+        var undefinedSystemRealTimeMessage1s: [UndefinedSystemRealTimeMessage1]!
+        var undefinedSystemRealTimeMessage2s: [UndefinedSystemRealTimeMessage2]!
         var systemExclusives: [SystemExclusive]!
         
         beforeEach {
@@ -48,6 +50,8 @@ class ParserSpec: QuickSpec {
             undefinedSystemCommonMessage2s = []
             tuneRequests = []
             timingClocks = []
+            undefinedSystemRealTimeMessage1s = []
+            undefinedSystemRealTimeMessage2s = []
             systemExclusives = []
             
             subject.notifier.noteOff = { noteOffs.append($0) }
@@ -64,6 +68,8 @@ class ParserSpec: QuickSpec {
             subject.notifier.undefinedSystemCommonMessage2 = { undefinedSystemCommonMessage2s.append($0) }
             subject.notifier.tuneRequest = { tuneRequests.append($0) }
             subject.notifier.timingClock = { timingClocks.append($0) }
+            subject.notifier.undefinedSystemRealTimeMessage1 = { undefinedSystemRealTimeMessage1s.append($0) }
+            subject.notifier.undefinedSystemRealTimeMessage2 = { undefinedSystemRealTimeMessage2s.append($0) }
             subject.notifier.systemExclusive = { systemExclusives.append($0) }
         }
         
@@ -850,6 +856,50 @@ class ParserSpec: QuickSpec {
                     TimingClock(),
                     TimingClock(),
                     TimingClock(),
+                ]))
+            }
+        }
+        
+        // MARK: Undefined System RealTime Message 1
+        describe("UndefinedSystemRealTimeMessage1") {
+            it("parse messages") {
+                let data: [UInt8] = [
+                    0xF9,
+                    0xF9,
+                    0xF3,   0,
+                    0xF9,
+                    0xF3,   0,
+                            0,
+                    0xF9
+                ]
+                subject.input(data: data)
+                expect(undefinedSystemRealTimeMessage1s).to(equal([
+                    UndefinedSystemRealTimeMessage1(),
+                    UndefinedSystemRealTimeMessage1(),
+                    UndefinedSystemRealTimeMessage1(),
+                    UndefinedSystemRealTimeMessage1(),
+                ]))
+            }
+        }
+        
+        // MARK: Undefined System RealTime Message 2
+        describe("UndefinedSystemRealTimeMessage2") {
+            it("parse messages") {
+                let data: [UInt8] = [
+                    0xFD,
+                    0xFD,
+                    0xF3,   0,
+                    0xFD,
+                    0xF3,   0,
+                    0,
+                    0xFD
+                ]
+                subject.input(data: data)
+                expect(undefinedSystemRealTimeMessage2s).to(equal([
+                    UndefinedSystemRealTimeMessage2(),
+                    UndefinedSystemRealTimeMessage2(),
+                    UndefinedSystemRealTimeMessage2(),
+                    UndefinedSystemRealTimeMessage2(),
                 ]))
             }
         }
