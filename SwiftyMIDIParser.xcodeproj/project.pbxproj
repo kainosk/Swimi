@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2A180EA72348702C00ED29EA /* SwiftyMIDIParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */; };
 		2A180EAD234870CD00ED29EA /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB134ED23486C81005D79A5 /* PerformanceTests.swift */; };
+		2A180EB0234875A400ED29EA /* NoteOff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A180EAF234875A400ED29EA /* NoteOff.swift */; };
 		2AB134AE234742CB005D79A5 /* SwiftyMIDIParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */; };
 		2AB134B5234742CB005D79A5 /* SwiftyMIDIParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2AB134D223479913005D79A5 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134D023479913005D79A5 /* Nimble.framework */; };
@@ -60,6 +61,7 @@
 /* Begin PBXFileReference section */
 		2A180EA22348702C00ED29EA /* PerformanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PerformanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A180EA62348702C00ED29EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A180EAF234875A400ED29EA /* NoteOff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteOff.swift; sourceTree = "<group>"; };
 		2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyMIDIParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyMIDIParser.h; sourceTree = "<group>"; };
 		2AB134A8234742CB005D79A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -116,6 +118,16 @@
 			path = PerformanceTests;
 			sourceTree = "<group>";
 		};
+		2A180EAE2348758E00ED29EA /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				2A180EAF234875A400ED29EA /* NoteOff.swift */,
+				2AB134DD2347A53A005D79A5 /* NoteOn.swift */,
+				2AB134E12347A579005D79A5 /* SystemExclusive.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
 		2AB1349A234742CB005D79A5 = {
 			isa = PBXGroup;
 			children = (
@@ -140,12 +152,11 @@
 		2AB134A6234742CB005D79A5 /* SwiftyMIDIParser */ = {
 			isa = PBXGroup;
 			children = (
-				2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */,
 				2AB134A8234742CB005D79A5 /* Info.plist */,
+				2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */,
+				2A180EAE2348758E00ED29EA /* Message */,
 				2AB134D923479BC1005D79A5 /* StatusType.swift */,
 				2AB134DB2347A327005D79A5 /* Parser.swift */,
-				2AB134DD2347A53A005D79A5 /* NoteOn.swift */,
-				2AB134E12347A579005D79A5 /* SystemExclusive.swift */,
 				2AB134E7234847FE005D79A5 /* DataSize.swift */,
 				2AB134E9234860CC005D79A5 /* Notifier.swift */,
 				2AB134EB23486152005D79A5 /* Segmentator.swift */,
@@ -320,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AB134DE2347A53A005D79A5 /* NoteOn.swift in Sources */,
+				2A180EB0234875A400ED29EA /* NoteOff.swift in Sources */,
 				2AB134E8234847FE005D79A5 /* DataSize.swift in Sources */,
 				2AB134E22347A579005D79A5 /* SystemExclusive.swift in Sources */,
 				2AB134EA234860CC005D79A5 /* Notifier.swift in Sources */,

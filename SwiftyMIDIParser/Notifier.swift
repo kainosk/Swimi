@@ -9,6 +9,7 @@
 import Foundation
 
 public class Notifier {
+    public var noteOff: ((NoteOff) -> Void)?
     public var noteOn: ((NoteOn) -> Void)?
     public var systemExclusive: ((SystemExclusive) -> Void)?
 
@@ -21,7 +22,7 @@ public class Notifier {
         case .noteOn:
             noteOn?(NoteOn.fromData(messageData))
         case .noteOff:
-            fatalError()
+            noteOff?(NoteOff.fromData(messageData))
         case .polyphonicKeyPressure:
             fatalError()
         case .controlChange:
