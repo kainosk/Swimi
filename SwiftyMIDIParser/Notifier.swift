@@ -22,6 +22,7 @@ public class Notifier {
     public var undefinedSystemCommonMessage1: ((UndefinedSystemCommonMessage1) -> Void)?
     public var undefinedSystemCommonMessage2: ((UndefinedSystemCommonMessage2) -> Void)?
     public var tuneRequest: ((TuneRequest) -> Void)?
+    public var timingClock: ((TimingClock) -> Void)?
     public var systemExclusive: ((SystemExclusive) -> Void)?
 
     func notify(messageData: [UInt8]) {
@@ -57,7 +58,7 @@ public class Notifier {
         case .tuneRequest:
             tuneRequest?(TuneRequest.fromData(messageData))
         case .timingClock:
-            fatalError()
+            timingClock?(TimingClock.fromData(messageData))
         case .undefinedSystemRealTimeMessage1:
             fatalError()
         case .start:

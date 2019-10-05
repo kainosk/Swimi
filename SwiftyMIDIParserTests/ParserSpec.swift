@@ -28,6 +28,7 @@ class ParserSpec: QuickSpec {
         var undefinedSystemCommonMessage1s: [UndefinedSystemCommonMessage1]!
         var undefinedSystemCommonMessage2s: [UndefinedSystemCommonMessage2]!
         var tuneRequests: [TuneRequest]!
+        var timingClocks: [TimingClock]!
         var systemExclusives: [SystemExclusive]!
         
         beforeEach {
@@ -46,6 +47,7 @@ class ParserSpec: QuickSpec {
             undefinedSystemCommonMessage1s = []
             undefinedSystemCommonMessage2s = []
             tuneRequests = []
+            timingClocks = []
             systemExclusives = []
             
             subject.notifier.noteOff = { noteOffs.append($0) }
@@ -61,6 +63,7 @@ class ParserSpec: QuickSpec {
             subject.notifier.undefinedSystemCommonMessage1 = { undefinedSystemCommonMessage1s.append($0) }
             subject.notifier.undefinedSystemCommonMessage2 = { undefinedSystemCommonMessage2s.append($0) }
             subject.notifier.tuneRequest = { tuneRequests.append($0) }
+            subject.notifier.timingClock = { timingClocks.append($0) }
             subject.notifier.systemExclusive = { systemExclusives.append($0) }
         }
         
@@ -825,6 +828,28 @@ class ParserSpec: QuickSpec {
                     TuneRequest(),
                     TuneRequest(),
                     TuneRequest(),
+                ]))
+            }
+        }
+        
+        // MARK: Timing Clock
+        describe("TimingClock") {
+            it("parse messages") {
+                let data: [UInt8] = [
+                    0xF8,
+                    0xF8,
+                    0xF3,   0,
+                    0xF8,
+                    0xF3,   0,
+                    0,
+                    0xF8
+                ]
+                subject.input(data: data)
+                expect(timingClocks).to(equal([
+                    TimingClock(),
+                    TimingClock(),
+                    TimingClock(),
+                    TimingClock(),
                 ]))
             }
         }
