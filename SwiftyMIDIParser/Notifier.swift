@@ -16,6 +16,7 @@ public class Notifier {
     public var programChange: ((ProgramChange) -> Void)?
     public var channelPressure: ((ChannelPressure) -> Void)?
     public var pitchBendChange: ((PitchBendChange) -> Void)?
+    public var timeCodeQuarterFrame: ((TimeCodeQuarterFrame) -> Void)?
     public var systemExclusive: ((SystemExclusive) -> Void)?
 
     func notify(messageData: [UInt8]) {
@@ -39,7 +40,7 @@ public class Notifier {
         case .pitchBendChange:
             pitchBendChange?(PitchBendChange.fromData(messageData))
         case .timecodeQuarterFrame:
-            fatalError()
+            timeCodeQuarterFrame?(TimeCodeQuarterFrame.fromData(messageData))
         case .songPositionPointer:
             fatalError()
         case .songSelect:

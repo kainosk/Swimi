@@ -22,6 +22,7 @@ class ParserSpec: QuickSpec {
         var programChanges: [ProgramChange]!
         var channelPressures: [ChannelPressure]!
         var pitchBendChanges: [PitchBendChange]!
+        var timeCodeQuarterFrames: [TimeCodeQuarterFrame]!
         var systemExclusives: [SystemExclusive]!
         
         beforeEach {
@@ -34,6 +35,7 @@ class ParserSpec: QuickSpec {
             programChanges = []
             channelPressures = []
             pitchBendChanges = []
+            timeCodeQuarterFrames = []
             systemExclusives = []
             
             subject.notifier.noteOff = { noteOffs.append($0) }
@@ -43,6 +45,7 @@ class ParserSpec: QuickSpec {
             subject.notifier.programChange = { programChanges.append($0) }
             subject.notifier.channelPressure = { channelPressures.append($0) }
             subject.notifier.pitchBendChange = { pitchBendChanges.append($0) }
+            subject.notifier.timeCodeQuarterFrame = { timeCodeQuarterFrames.append($0) }
             subject.notifier.systemExclusive = { systemExclusives.append($0) }
         }
         
@@ -563,6 +566,72 @@ class ParserSpec: QuickSpec {
                         subject.input(data: [0xE5, 64, 0])
                         expect(pitchBendChanges).to(equal([
                             PitchBendChange(channel: 5, lsb: 64, msb: 0)
+                        ]))
+                    }
+                }
+            }
+        }
+        
+        // MARK: Time Code Quarter Frame
+        describe("TimeCodeQuarterFrame") {
+            // Cases for all ranges will be tested in
+            // TimeCodeQuarterFrameMessageTypeSpec &
+            // TimeCodeQuarterFrameSpec
+            it("parse messages even if it contains RunningStatus") {
+                let data: [UInt8] = [
+                    0xF1,   0b00000001,
+                    0xF1,   0b00000011,
+                            0b00000111, // Running Status
+                            0b00001111, // Running Status
+                    0xF1,   0b00011111,
+                    0xF0,     11, 0xF7, // System Exclusive
+                    0xF1,   0b00111111,
+                            0b01111111, // Running Status
+                    0xF0,     22, 0xF7, // System Exclusive
+                    0xF1,   0b01111111,
+                ]
+                subject.input(data: data)
+                expect(timeCodeQuarterFrames).to(equal([
+                    TimeCodeQuarterFrame(messageType: .frameCountLower4bit,  value:  1),
+                    TimeCodeQuarterFrame(messageType: .frameCountLower4bit,  value:  3),
+                    TimeCodeQuarterFrame(messageType: .frameCountLower4bit,  value:  7),
+                    TimeCodeQuarterFrame(messageType: .frameCountLower4bit,  value: 15),
+                    TimeCodeQuarterFrame(messageType: .frameCountUpper4bit,  value: 15),
+                    TimeCodeQuarterFrame(messageType: .secondCountUpper4bit, value: 15),
+                    TimeCodeQuarterFrame(messageType: .timeCountUpper4bit,   value: 15),
+                    TimeCodeQuarterFrame(messageType: .timeCountUpper4bit,   value: 15),
+                ]))
+            }
+            describe("range") {
+                context("messageType maximum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xF1, 0b01110000])
+                        expect(timeCodeQuarterFrames).to(equal([
+                            TimeCodeQuarterFrame(messageType: .timeCountUpper4bit, value: 0)
+                        ]))
+                    }
+                }
+                context("messageType minimum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xF1, 0b00001111])
+                        expect(timeCodeQuarterFrames).to(equal([
+                            TimeCodeQuarterFrame(messageType: .frameCountLower4bit, value: 15)
+                        ]))
+                    }
+                }
+                context("value maximum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xF1, 0b00001111])
+                        expect(timeCodeQuarterFrames).to(equal([
+                            TimeCodeQuarterFrame(messageType: .frameCountLower4bit, value: 15)
+                        ]))
+                    }
+                }
+                context("value minimum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xF1, 0b00000000])
+                        expect(timeCodeQuarterFrames).to(equal([
+                            TimeCodeQuarterFrame(messageType: .frameCountLower4bit, value: 0)
                         ]))
                     }
                 }
