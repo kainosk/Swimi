@@ -46,4 +46,19 @@ class PerformanceTests: XCTestCase {
         // Average: 0.275 second (dataSize = 2700 KB)
         //  => 9818 kB/sec
     }
+    
+    func test_performance2() {
+        let subject = Parser()
+        let messageBody = [UInt8].init(repeating: 0x70, count: 1024 * 1024 * 256)
+        
+        measure {
+            subject.input(data: [0xF0] + messageBody + [0xF7])
+        }
+        
+        // 2019/10/05
+        // MacBook Pro (15-inch, 2018)
+        // 2.2 GHz Intel Core i7
+        // Average: 7.8 second (dataSize = 256 MB)
+        //  => 33608 kB/sec
+    }
 }
