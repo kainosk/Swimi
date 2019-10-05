@@ -363,8 +363,6 @@ class ParserSpec: QuickSpec {
         
         // MARK: Program Change
         describe("ProgramChange") {
-            // We will omit cases for all "Control Numbers".
-            // Delegate these cases to ControlNumber enum's tests.
             it("parse messages even if it contains RunningStatus") {
                 let data: [UInt8] = [
                     0xC5,   1,
@@ -415,7 +413,7 @@ class ParserSpec: QuickSpec {
                         ]))
                     }
                 }
-                context("control number minimum") {
+                context("program number minimum") {
                     it("can parse correctly") {
                         subject.input(data: [0xC5, 0])
                         expect(programChanges).to(equal([
