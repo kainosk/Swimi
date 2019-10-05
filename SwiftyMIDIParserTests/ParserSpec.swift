@@ -27,6 +27,7 @@ class ParserSpec: QuickSpec {
         var songSelects: [SongSelect]!
         var undefinedSystemCommonMessage1s: [UndefinedSystemCommonMessage1]!
         var undefinedSystemCommonMessage2s: [UndefinedSystemCommonMessage2]!
+        var tuneRequests: [TuneRequest]!
         var systemExclusives: [SystemExclusive]!
         
         beforeEach {
@@ -44,6 +45,7 @@ class ParserSpec: QuickSpec {
             songSelects = []
             undefinedSystemCommonMessage1s = []
             undefinedSystemCommonMessage2s = []
+            tuneRequests = []
             systemExclusives = []
             
             subject.notifier.noteOff = { noteOffs.append($0) }
@@ -58,6 +60,7 @@ class ParserSpec: QuickSpec {
             subject.notifier.songSelect = { songSelects.append($0) }
             subject.notifier.undefinedSystemCommonMessage1 = { undefinedSystemCommonMessage1s.append($0) }
             subject.notifier.undefinedSystemCommonMessage2 = { undefinedSystemCommonMessage2s.append($0) }
+            subject.notifier.tuneRequest = { tuneRequests.append($0) }
             subject.notifier.systemExclusive = { systemExclusives.append($0) }
         }
         
@@ -800,6 +803,28 @@ class ParserSpec: QuickSpec {
                     UndefinedSystemCommonMessage2(),
                     UndefinedSystemCommonMessage2(),
                     UndefinedSystemCommonMessage2(),
+                ]))
+            }
+        }
+        
+        // MARK: Tune Request
+        describe("TuneRequest") {
+            it("parse messages") {
+                let data: [UInt8] = [
+                    0xF6,
+                    0xF6,
+                    0xF3,   0,
+                    0xF6,
+                    0xF3,   0,
+                    0,
+                    0xF6
+                ]
+                subject.input(data: data)
+                expect(tuneRequests).to(equal([
+                    TuneRequest(),
+                    TuneRequest(),
+                    TuneRequest(),
+                    TuneRequest(),
                 ]))
             }
         }
