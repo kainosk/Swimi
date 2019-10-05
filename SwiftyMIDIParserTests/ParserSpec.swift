@@ -18,6 +18,7 @@ class ParserSpec: QuickSpec {
         var noteOffs: [NoteOff]!
         var noteOns: [NoteOn]!
         var polyphonicKeyPressures: [PolyphonicKeyPressure]!
+        var controlChanges: [ControlChange]!
         var systemExclusives: [SystemExclusive]!
         
         beforeEach {
@@ -26,11 +27,13 @@ class ParserSpec: QuickSpec {
             noteOffs = []
             noteOns = []
             polyphonicKeyPressures = []
+            controlChanges = []
             systemExclusives = []
             
             subject.notifier.noteOff = { noteOffs.append($0) }
             subject.notifier.noteOn = { noteOns.append($0) }
-            subject.notifier.polyphonicKeyPressure = { polyphonicKeyPressures.append($0) } 
+            subject.notifier.polyphonicKeyPressure = { polyphonicKeyPressures.append($0) }
+            subject.notifier.controlChange = { controlChanges.append($0) }
             subject.notifier.systemExclusive = { systemExclusives.append($0) }
         }
         
@@ -265,6 +268,87 @@ class ParserSpec: QuickSpec {
                         subject.input(data: [0xA5, 64, 0])
                         expect(polyphonicKeyPressures).to(equal([
                             PolyphonicKeyPressure(channel: 5, note: 64, pressure: 0)
+                        ]))
+                    }
+                }
+            }
+        }
+        
+        // MARK: Control Change
+        describe("controlChange") {
+            // We will omit cases for all "Control Numbers".
+            // Delegate these cases to ControlNumber enum's tests.
+            it("parse messages even if it contains RunningStatus") {
+                let data: [UInt8] = [
+                    0xB5,   1,    1,
+                    0xB5,   3,    3,
+                            7,    7, // Running Status
+                           15,   15, // Running Status
+                    0xB5,  31,   31,
+                    0xF0,  11, 0xF7, // System Exclusive
+                    0xB5,  63,   63,
+                          127,  127, // Running Status
+                    0xF0,  22, 0xF7, // System Exclusive
+                    0xB5,   0,    0,
+                ]
+                subject.input(data: data)
+                expect(controlChanges).to(equal([
+                    ControlChange(channel: 5, controlNumber: ControlNumber(rawValue:    1)!, value:   1),
+                    ControlChange(channel: 5, controlNumber: ControlNumber(rawValue:    3)!, value:   3),
+                    ControlChange(channel: 5, controlNumber: ControlNumber(rawValue:    7)!, value:   7),
+                    ControlChange(channel: 5, controlNumber: ControlNumber(rawValue:   15)!, value:  15),
+                    ControlChange(channel: 5, controlNumber: ControlNumber(rawValue:   31)!, value:  31),
+                    ControlChange(channel: 5, controlNumber: ControlNumber(rawValue:   63)!, value:  63),
+                    ControlChange(channel: 5, controlNumber: ControlNumber(rawValue:  127)!, value: 127),
+                    ControlChange(channel: 5, controlNumber: ControlNumber(rawValue:    0)!, value:   0),
+                ]))
+            }
+            describe("range") {
+                context("channel maximum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xBF, 64, 64])
+                        expect(controlChanges).to(equal([
+                            ControlChange(channel: 15, controlNumber: .damperPedal, value: 64)
+                        ]))
+                    }
+                }
+                context("channel minimum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xB0, 64, 64])
+                        expect(controlChanges).to(equal([
+                            ControlChange(channel: 0, controlNumber: .damperPedal, value: 64)
+                        ]))
+                    }
+                }
+                context("control number maximum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xB5, 127, 64])
+                        expect(controlChanges).to(equal([
+                            ControlChange(channel: 5, controlNumber: .polyModeOn, value: 64)
+                        ]))
+                    }
+                }
+                context("control number minimum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xB5, 0, 64])
+                        expect(controlChanges).to(equal([
+                            ControlChange(channel: 5, controlNumber: .bankSelectMSB, value: 64)
+                        ]))
+                    }
+                }
+                context("value maximum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xB5, 64, 127])
+                        expect(controlChanges).to(equal([
+                            ControlChange(channel: 5, controlNumber: .damperPedal, value: 127)
+                        ]))
+                    }
+                }
+                context("value minimum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xB5, 64, 0])
+                        expect(controlChanges).to(equal([
+                            ControlChange(channel: 5, controlNumber: .damperPedal, value: 0)
                         ]))
                     }
                 }

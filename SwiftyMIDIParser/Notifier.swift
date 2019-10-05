@@ -12,6 +12,7 @@ public class Notifier {
     public var noteOff: ((NoteOff) -> Void)?
     public var noteOn: ((NoteOn) -> Void)?
     public var polyphonicKeyPressure: ((PolyphonicKeyPressure) -> Void)?
+    public var controlChange: ((ControlChange) -> Void)?
     public var systemExclusive: ((SystemExclusive) -> Void)?
 
     func notify(messageData: [UInt8]) {
@@ -27,7 +28,7 @@ public class Notifier {
         case .polyphonicKeyPressure:
             polyphonicKeyPressure?(PolyphonicKeyPressure.fromData(messageData))
         case .controlChange:
-            fatalError()
+            controlChange?(ControlChange.fromData(messageData))
         case .programChange:
             fatalError()
         case .channelPressure:
