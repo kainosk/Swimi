@@ -23,6 +23,7 @@ class ParserSpec: QuickSpec {
         var channelPressures: [ChannelPressure]!
         var pitchBendChanges: [PitchBendChange]!
         var timeCodeQuarterFrames: [TimeCodeQuarterFrame]!
+        var songPositionPointers: [SongPositionPointer]!
         var systemExclusives: [SystemExclusive]!
         
         beforeEach {
@@ -36,6 +37,7 @@ class ParserSpec: QuickSpec {
             channelPressures = []
             pitchBendChanges = []
             timeCodeQuarterFrames = []
+            songPositionPointers = []
             systemExclusives = []
             
             subject.notifier.noteOff = { noteOffs.append($0) }
@@ -46,6 +48,7 @@ class ParserSpec: QuickSpec {
             subject.notifier.channelPressure = { channelPressures.append($0) }
             subject.notifier.pitchBendChange = { pitchBendChanges.append($0) }
             subject.notifier.timeCodeQuarterFrame = { timeCodeQuarterFrames.append($0) }
+            subject.notifier.songPositionPointer = { songPositionPointers.append($0) }
             subject.notifier.systemExclusive = { systemExclusives.append($0) }
         }
         
@@ -632,6 +635,69 @@ class ParserSpec: QuickSpec {
                         subject.input(data: [0xF1, 0b00000000])
                         expect(timeCodeQuarterFrames).to(equal([
                             TimeCodeQuarterFrame(messageType: .frameCountLower4bit, value: 0)
+                        ]))
+                    }
+                }
+            }
+        }
+        
+        // MARK: Song Position Pointer
+        describe("SongPositionPointer") {
+            it("parse messages even if it contains RunningStatus") {
+                let data: [UInt8] = [
+                    0xF2,   1,    1,
+                    0xF2,   3,    3,
+                            7,    7, // Running Status
+                           15,   15, // Running Status
+                    0xF2,  31,   31,
+                    0xF0,  11, 0xF7, // System Exclusive
+                    0xF2,  63,   63,
+                          127,  127, // Running Status
+                    0xF0,  22, 0xF7, // System Exclusive
+                    0xF2,   0,    0,
+                ]
+                subject.input(data: data)
+                expect(songPositionPointers).to(equal([
+                    SongPositionPointer(lsb:   1, msb:   1),
+                    SongPositionPointer(lsb:   3, msb:   3),
+                    SongPositionPointer(lsb:   7, msb:   7),
+                    SongPositionPointer(lsb:  15, msb:  15),
+                    SongPositionPointer(lsb:  31, msb:  31),
+                    SongPositionPointer(lsb:  63, msb:  63),
+                    SongPositionPointer(lsb: 127, msb: 127),
+                    SongPositionPointer(lsb:   0, msb:   0),
+                ]))
+            }
+            describe("range") {
+                context("lsb maximum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xF2, 127, 64])
+                        expect(songPositionPointers).to(equal([
+                            SongPositionPointer(lsb: 127, msb: 64)
+                        ]))
+                    }
+                }
+                context("lsb minimum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xF2, 0, 64])
+                        expect(songPositionPointers).to(equal([
+                            SongPositionPointer(lsb: 0, msb: 64)
+                        ]))
+                    }
+                }
+                context("msb maximum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xF2, 64, 127])
+                        expect(songPositionPointers).to(equal([
+                            SongPositionPointer(lsb: 64, msb: 127)
+                        ]))
+                    }
+                }
+                context("msb minimum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xF2, 64, 0])
+                        expect(songPositionPointers).to(equal([
+                            SongPositionPointer(lsb: 64, msb: 0)
                         ]))
                     }
                 }
