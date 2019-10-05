@@ -19,6 +19,8 @@ public class Notifier {
     public var timeCodeQuarterFrame: ((TimeCodeQuarterFrame) -> Void)?
     public var songPositionPointer: ((SongPositionPointer) -> Void)?
     public var songSelect: ((SongSelect) -> Void)?
+    public var undefinedSystemCommonMessage1: ((UndefinedSystemCommonMessage1) -> Void)?
+    public var undefinedSystemCommonMessage2: ((UndefinedSystemCommonMessage2) -> Void)?
     public var systemExclusive: ((SystemExclusive) -> Void)?
 
     func notify(messageData: [UInt8]) {
@@ -48,9 +50,9 @@ public class Notifier {
         case .songSelect:
             songSelect?(SongSelect.fromData(messageData))
         case .undefinedSystemCommonMessage1:
-            fatalError()
+            undefinedSystemCommonMessage1?(UndefinedSystemCommonMessage1.fromData(messageData))
         case .undefinedSystemCommonMessage2:
-            fatalError()
+            undefinedSystemCommonMessage2?(UndefinedSystemCommonMessage2.fromData(messageData))
         case .tuneRequest:
             fatalError()
         case .timingClock:

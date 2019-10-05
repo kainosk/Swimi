@@ -19,6 +19,8 @@
 		2A180EBE23489AF000ED29EA /* PitchBendChangeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A180EBD23489AF000ED29EA /* PitchBendChangeSpec.swift */; };
 		2A37D2582348DD9400DF807A /* SongPositionPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D2572348DD9400DF807A /* SongPositionPointer.swift */; };
 		2A37D25A2348DF5200DF807A /* SongSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D2592348DF5200DF807A /* SongSelect.swift */; };
+		2A37D25C2348E13F00DF807A /* UndefinedSystemCommonMessage1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D25B2348E13F00DF807A /* UndefinedSystemCommonMessage1.swift */; };
+		2A37D25E2348E18800DF807A /* UndefinedSystemCommonMessage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D25D2348E18800DF807A /* UndefinedSystemCommonMessage2.swift */; };
 		2AB134AE234742CB005D79A5 /* SwiftyMIDIParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */; };
 		2AB134B5234742CB005D79A5 /* SwiftyMIDIParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2AB134D223479913005D79A5 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134D023479913005D79A5 /* Nimble.framework */; };
@@ -83,6 +85,8 @@
 		2A180EBD23489AF000ED29EA /* PitchBendChangeSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchBendChangeSpec.swift; sourceTree = "<group>"; };
 		2A37D2572348DD9400DF807A /* SongPositionPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongPositionPointer.swift; sourceTree = "<group>"; };
 		2A37D2592348DF5200DF807A /* SongSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongSelect.swift; sourceTree = "<group>"; };
+		2A37D25B2348E13F00DF807A /* UndefinedSystemCommonMessage1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndefinedSystemCommonMessage1.swift; sourceTree = "<group>"; };
+		2A37D25D2348E18800DF807A /* UndefinedSystemCommonMessage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndefinedSystemCommonMessage2.swift; sourceTree = "<group>"; };
 		2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyMIDIParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyMIDIParser.h; sourceTree = "<group>"; };
 		2AB134A8234742CB005D79A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 				2AC9056B2348A42300EDAEDC /* TimeCodeQuarterFrameMessageType.swift */,
 				2A37D2572348DD9400DF807A /* SongPositionPointer.swift */,
 				2A37D2592348DF5200DF807A /* SongSelect.swift */,
+				2A37D25B2348E13F00DF807A /* UndefinedSystemCommonMessage1.swift */,
+				2A37D25D2348E18800DF807A /* UndefinedSystemCommonMessage2.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -367,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AC9056C2348A42300EDAEDC /* TimeCodeQuarterFrameMessageType.swift in Sources */,
+				2A37D25E2348E18800DF807A /* UndefinedSystemCommonMessage2.swift in Sources */,
 				2A180EB223487ABC00ED29EA /* PolyphonicKeyPressure.swift in Sources */,
 				2AB134DE2347A53A005D79A5 /* NoteOn.swift in Sources */,
 				2A180EB0234875A400ED29EA /* NoteOff.swift in Sources */,
@@ -377,6 +384,7 @@
 				2AB134EC23486152005D79A5 /* Segmentator.swift in Sources */,
 				2A180EB623487D8D00ED29EA /* ControlNumber.swift in Sources */,
 				2A180EBC234898DB00ED29EA /* PitchBendChange.swift in Sources */,
+				2A37D25C2348E13F00DF807A /* UndefinedSystemCommonMessage1.swift in Sources */,
 				2AB134DC2347A327005D79A5 /* Parser.swift in Sources */,
 				2AB134DA23479BC1005D79A5 /* StatusType.swift in Sources */,
 				2A37D2582348DD9400DF807A /* SongPositionPointer.swift in Sources */,

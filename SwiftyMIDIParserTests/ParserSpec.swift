@@ -25,6 +25,8 @@ class ParserSpec: QuickSpec {
         var timeCodeQuarterFrames: [TimeCodeQuarterFrame]!
         var songPositionPointers: [SongPositionPointer]!
         var songSelects: [SongSelect]!
+        var undefinedSystemCommonMessage1s: [UndefinedSystemCommonMessage1]!
+        var undefinedSystemCommonMessage2s: [UndefinedSystemCommonMessage2]!
         var systemExclusives: [SystemExclusive]!
         
         beforeEach {
@@ -40,6 +42,8 @@ class ParserSpec: QuickSpec {
             timeCodeQuarterFrames = []
             songPositionPointers = []
             songSelects = []
+            undefinedSystemCommonMessage1s = []
+            undefinedSystemCommonMessage2s = []
             systemExclusives = []
             
             subject.notifier.noteOff = { noteOffs.append($0) }
@@ -52,6 +56,8 @@ class ParserSpec: QuickSpec {
             subject.notifier.timeCodeQuarterFrame = { timeCodeQuarterFrames.append($0) }
             subject.notifier.songPositionPointer = { songPositionPointers.append($0) }
             subject.notifier.songSelect = { songSelects.append($0) }
+            subject.notifier.undefinedSystemCommonMessage1 = { undefinedSystemCommonMessage1s.append($0) }
+            subject.notifier.undefinedSystemCommonMessage2 = { undefinedSystemCommonMessage2s.append($0) }
             subject.notifier.systemExclusive = { systemExclusives.append($0) }
         }
         
@@ -751,6 +757,50 @@ class ParserSpec: QuickSpec {
                         ]))
                     }
                 }
+            }
+        }
+        
+        // MARK: Undefined System Common Message 1
+        describe("UndefinedSystemCommonMessage1") {
+            it("parse messages") {
+                let data: [UInt8] = [
+                    0xF4,
+                    0xF4,
+                    0xF3,   0,
+                    0xF4,
+                    0xF3,   0,
+                            0,
+                    0xF4
+                ]
+                subject.input(data: data)
+                expect(undefinedSystemCommonMessage1s).to(equal([
+                    UndefinedSystemCommonMessage1(),
+                    UndefinedSystemCommonMessage1(),
+                    UndefinedSystemCommonMessage1(),
+                    UndefinedSystemCommonMessage1(),
+                ]))
+            }
+        }
+        
+        // MARK: Undefined System Common Message 2
+        describe("UndefinedSystemCommonMessage2") {
+            it("parse messages") {
+                let data: [UInt8] = [
+                    0xF5,
+                    0xF5,
+                    0xF3,   0,
+                    0xF5,
+                    0xF3,   0,
+                    0,
+                    0xF5
+                ]
+                subject.input(data: data)
+                expect(undefinedSystemCommonMessage2s).to(equal([
+                    UndefinedSystemCommonMessage2(),
+                    UndefinedSystemCommonMessage2(),
+                    UndefinedSystemCommonMessage2(),
+                    UndefinedSystemCommonMessage2(),
+                ]))
             }
         }
     }
