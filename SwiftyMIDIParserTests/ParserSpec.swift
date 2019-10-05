@@ -19,6 +19,7 @@ class ParserSpec: QuickSpec {
         var noteOns: [NoteOn]!
         var polyphonicKeyPressures: [PolyphonicKeyPressure]!
         var controlChanges: [ControlChange]!
+        var programChanges: [ProgramChange]!
         var systemExclusives: [SystemExclusive]!
         
         beforeEach {
@@ -28,12 +29,14 @@ class ParserSpec: QuickSpec {
             noteOns = []
             polyphonicKeyPressures = []
             controlChanges = []
+            programChanges = []
             systemExclusives = []
             
             subject.notifier.noteOff = { noteOffs.append($0) }
             subject.notifier.noteOn = { noteOns.append($0) }
             subject.notifier.polyphonicKeyPressure = { polyphonicKeyPressures.append($0) }
             subject.notifier.controlChange = { controlChanges.append($0) }
+            subject.notifier.programChange = { programChanges.append($0) }
             subject.notifier.systemExclusive = { systemExclusives.append($0) }
         }
         
@@ -349,6 +352,71 @@ class ParserSpec: QuickSpec {
                         subject.input(data: [0xB5, 64, 0])
                         expect(controlChanges).to(equal([
                             ControlChange(channel: 5, controlNumber: .damperPedal, value: 0)
+                        ]))
+                    }
+                }
+            }
+        }
+        
+        // MARK: Program Change
+        describe("ProgramChange") {
+            // We will omit cases for all "Control Numbers".
+            // Delegate these cases to ControlNumber enum's tests.
+            it("parse messages even if it contains RunningStatus") {
+                let data: [UInt8] = [
+                    0xC5,   1,
+                    0xC5,   3,
+                            7,       // Running Status
+                           15,       // Running Status
+                    0xC5,  31,
+                    0xF0,  11, 0xF7, // System Exclusive
+                    0xC5,  63,
+                          127,       // Running Status
+                    0xF0,  22, 0xF7, // System Exclusive
+                    0xC5,   0,
+                ]
+                subject.input(data: data)
+                expect(programChanges).to(equal([
+                    ProgramChange(channel: 5,  program:   1),
+                    ProgramChange(channel: 5,  program:   3),
+                    ProgramChange(channel: 5,  program:   7),
+                    ProgramChange(channel: 5,  program:  15),
+                    ProgramChange(channel: 5,  program:  31),
+                    ProgramChange(channel: 5,  program:  63),
+                    ProgramChange(channel: 5,  program: 127),
+                    ProgramChange(channel: 5,  program:   0),
+                ]))
+            }
+            describe("range") {
+                context("channel maximum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xCF, 64])
+                        expect(programChanges).to(equal([
+                            ProgramChange(channel: 15,  program: 64)
+                        ]))
+                    }
+                }
+                context("channel minimum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xC0, 64])
+                        expect(programChanges).to(equal([
+                            ProgramChange(channel: 0,  program: 64)
+                        ]))
+                    }
+                }
+                context("program number maximum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xC5, 127])
+                        expect(programChanges).to(equal([
+                            ProgramChange(channel: 5,  program: 127)
+                        ]))
+                    }
+                }
+                context("control number minimum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xC5, 0])
+                        expect(programChanges).to(equal([
+                            ProgramChange(channel: 5,  program: 0)
                         ]))
                     }
                 }

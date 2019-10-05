@@ -13,6 +13,7 @@
 		2A180EB223487ABC00ED29EA /* PolyphonicKeyPressure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A180EB123487ABC00ED29EA /* PolyphonicKeyPressure.swift */; };
 		2A180EB423487D0C00ED29EA /* ControlChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A180EB323487D0C00ED29EA /* ControlChange.swift */; };
 		2A180EB623487D8D00ED29EA /* ControlNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A180EB523487D8D00ED29EA /* ControlNumber.swift */; };
+		2A180EB823488E2D00ED29EA /* ProgramChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A180EB723488E2D00ED29EA /* ProgramChange.swift */; };
 		2AB134AE234742CB005D79A5 /* SwiftyMIDIParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */; };
 		2AB134B5234742CB005D79A5 /* SwiftyMIDIParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2AB134D223479913005D79A5 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134D023479913005D79A5 /* Nimble.framework */; };
@@ -68,6 +69,7 @@
 		2A180EB123487ABC00ED29EA /* PolyphonicKeyPressure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolyphonicKeyPressure.swift; sourceTree = "<group>"; };
 		2A180EB323487D0C00ED29EA /* ControlChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlChange.swift; sourceTree = "<group>"; };
 		2A180EB523487D8D00ED29EA /* ControlNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlNumber.swift; sourceTree = "<group>"; };
+		2A180EB723488E2D00ED29EA /* ProgramChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramChange.swift; sourceTree = "<group>"; };
 		2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyMIDIParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyMIDIParser.h; sourceTree = "<group>"; };
 		2AB134A8234742CB005D79A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				2AB134E12347A579005D79A5 /* SystemExclusive.swift */,
 				2A180EB323487D0C00ED29EA /* ControlChange.swift */,
 				2A180EB523487D8D00ED29EA /* ControlNumber.swift */,
+				2A180EB723488E2D00ED29EA /* ProgramChange.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				2AB134DE2347A53A005D79A5 /* NoteOn.swift in Sources */,
 				2A180EB0234875A400ED29EA /* NoteOff.swift in Sources */,
 				2AB134E8234847FE005D79A5 /* DataSize.swift in Sources */,
+				2A180EB823488E2D00ED29EA /* ProgramChange.swift in Sources */,
 				2AB134E22347A579005D79A5 /* SystemExclusive.swift in Sources */,
 				2AB134EA234860CC005D79A5 /* Notifier.swift in Sources */,
 				2AB134EC23486152005D79A5 /* Segmentator.swift in Sources */,

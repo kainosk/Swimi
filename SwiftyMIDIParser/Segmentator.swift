@@ -35,6 +35,7 @@ class Segmentator {
     
     func reset() {
         message = [UInt8]()
+        focusingDataSize = nil
     }
 
     init() {
