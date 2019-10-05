@@ -24,6 +24,7 @@ class ParserSpec: QuickSpec {
         var pitchBendChanges: [PitchBendChange]!
         var timeCodeQuarterFrames: [TimeCodeQuarterFrame]!
         var songPositionPointers: [SongPositionPointer]!
+        var songSelects: [SongSelect]!
         var systemExclusives: [SystemExclusive]!
         
         beforeEach {
@@ -38,6 +39,7 @@ class ParserSpec: QuickSpec {
             pitchBendChanges = []
             timeCodeQuarterFrames = []
             songPositionPointers = []
+            songSelects = []
             systemExclusives = []
             
             subject.notifier.noteOff = { noteOffs.append($0) }
@@ -49,6 +51,7 @@ class ParserSpec: QuickSpec {
             subject.notifier.pitchBendChange = { pitchBendChanges.append($0) }
             subject.notifier.timeCodeQuarterFrame = { timeCodeQuarterFrames.append($0) }
             subject.notifier.songPositionPointer = { songPositionPointers.append($0) }
+            subject.notifier.songSelect = { songSelects.append($0) }
             subject.notifier.systemExclusive = { systemExclusives.append($0) }
         }
         
@@ -698,6 +701,53 @@ class ParserSpec: QuickSpec {
                         subject.input(data: [0xF2, 64, 0])
                         expect(songPositionPointers).to(equal([
                             SongPositionPointer(lsb: 64, msb: 0)
+                        ]))
+                    }
+                }
+            }
+        }
+        
+        // MARK: Song Select
+        describe("SongSelect") {
+            it("parse messages even if it contains RunningStatus") {
+                let data: [UInt8] = [
+                    0xF3,   1,
+                    0xF3,   3,
+                            7,       // Running Status
+                           15,       // Running Status
+                    0xF3,  31,
+                    0xF0,  11, 0xF7, // System Exclusive
+                    0xF3,  63,
+                          127,       // Running Status
+                    0xF0,  22, 0xF7, // System Exclusive
+                    0xF3,   0,
+                ]
+                subject.input(data: data)
+                expect(songSelects).to(equal([
+                    SongSelect(songNumber:   1),
+                    SongSelect(songNumber:   3),
+                    SongSelect(songNumber:   7),
+                    SongSelect(songNumber:  15),
+                    SongSelect(songNumber:  31),
+                    SongSelect(songNumber:  63),
+                    SongSelect(songNumber: 127),
+                    SongSelect(songNumber:   0),
+                ]))
+            }
+            describe("range") {
+                context("songNumber number maximum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xF3, 127])
+                        expect(songSelects).to(equal([
+                            SongSelect(songNumber: 127)
+                        ]))
+                    }
+                }
+                context("songNumber number minimum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xF3, 0])
+                        expect(songSelects).to(equal([
+                            SongSelect(songNumber: 0)
                         ]))
                     }
                 }
