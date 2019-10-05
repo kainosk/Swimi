@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A180EA72348702C00ED29EA /* SwiftyMIDIParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */; };
+		2A180EAD234870CD00ED29EA /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB134ED23486C81005D79A5 /* PerformanceTests.swift */; };
 		2AB134AE234742CB005D79A5 /* SwiftyMIDIParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */; };
 		2AB134B5234742CB005D79A5 /* SwiftyMIDIParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2AB134D223479913005D79A5 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134D023479913005D79A5 /* Nimble.framework */; };
@@ -24,6 +26,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2A180EA82348702C00ED29EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AB1349B234742CB005D79A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2AB134A3234742CB005D79A5;
+			remoteInfo = SwiftyMIDIParser;
+		};
 		2AB134AF234742CB005D79A5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2AB1349B234742CB005D79A5 /* Project object */;
@@ -49,6 +58,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A180EA22348702C00ED29EA /* PerformanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PerformanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A180EA62348702C00ED29EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyMIDIParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyMIDIParser.h; sourceTree = "<group>"; };
 		2AB134A8234742CB005D79A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,9 +75,18 @@
 		2AB134E7234847FE005D79A5 /* DataSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSize.swift; sourceTree = "<group>"; };
 		2AB134E9234860CC005D79A5 /* Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		2AB134EB23486152005D79A5 /* Segmentator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segmentator.swift; sourceTree = "<group>"; };
+		2AB134ED23486C81005D79A5 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PerformanceTests.swift; path = ../SwiftyMIDIParserTests/PerformanceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2A180E9F2348702C00ED29EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A180EA72348702C00ED29EA /* SwiftyMIDIParser.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2AB134A1234742CB005D79A5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -87,11 +107,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A180EA32348702C00ED29EA /* PerformanceTests */ = {
+			isa = PBXGroup;
+			children = (
+				2AB134ED23486C81005D79A5 /* PerformanceTests.swift */,
+				2A180EA62348702C00ED29EA /* Info.plist */,
+			);
+			path = PerformanceTests;
+			sourceTree = "<group>";
+		};
 		2AB1349A234742CB005D79A5 = {
 			isa = PBXGroup;
 			children = (
 				2AB134A6234742CB005D79A5 /* SwiftyMIDIParser */,
 				2AB134B1234742CB005D79A5 /* SwiftyMIDIParserTests */,
+				2A180EA32348702C00ED29EA /* PerformanceTests */,
 				2AB134A5234742CB005D79A5 /* Products */,
 				2AB134CF23479913005D79A5 /* Frameworks */,
 			);
@@ -102,6 +132,7 @@
 			children = (
 				2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */,
 				2AB134AD234742CB005D79A5 /* SwiftyMIDIParserTests.xctest */,
+				2A180EA22348702C00ED29EA /* PerformanceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -154,6 +185,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		2A180EA12348702C00ED29EA /* PerformanceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A180EAC2348702C00ED29EA /* Build configuration list for PBXNativeTarget "PerformanceTests" */;
+			buildPhases = (
+				2A180E9E2348702C00ED29EA /* Sources */,
+				2A180E9F2348702C00ED29EA /* Frameworks */,
+				2A180EA02348702C00ED29EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A180EA92348702C00ED29EA /* PBXTargetDependency */,
+			);
+			name = PerformanceTests;
+			productName = PerformanceTests;
+			productReference = 2A180EA22348702C00ED29EA /* PerformanceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		2AB134A3234742CB005D79A5 /* SwiftyMIDIParser */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2AB134B8234742CB005D79A5 /* Build configuration list for PBXNativeTarget "SwiftyMIDIParser" */;
@@ -201,6 +250,9 @@
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = kai;
 				TargetAttributes = {
+					2A180EA12348702C00ED29EA = {
+						CreatedOnToolsVersion = 11.0;
+					};
 					2AB134A3234742CB005D79A5 = {
 						CreatedOnToolsVersion = 11.0;
 						LastSwiftMigration = 1100;
@@ -225,11 +277,19 @@
 			targets = (
 				2AB134A3234742CB005D79A5 /* SwiftyMIDIParser */,
 				2AB134AC234742CB005D79A5 /* SwiftyMIDIParserTests */,
+				2A180EA12348702C00ED29EA /* PerformanceTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2A180EA02348702C00ED29EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2AB134A2234742CB005D79A5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -247,6 +307,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2A180E9E2348702C00ED29EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A180EAD234870CD00ED29EA /* PerformanceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2AB134A0234742CB005D79A5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -272,6 +340,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2A180EA92348702C00ED29EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2AB134A3234742CB005D79A5 /* SwiftyMIDIParser */;
+			targetProxy = 2A180EA82348702C00ED29EA /* PBXContainerItemProxy */;
+		};
 		2AB134B0234742CB005D79A5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2AB134A3234742CB005D79A5 /* SwiftyMIDIParser */;
@@ -280,6 +353,42 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		2A180EAA2348702C00ED29EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LMSP24EB78;
+				INFOPLIST_FILE = PerformanceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kainosk.PerformanceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2A180EAB2348702C00ED29EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LMSP24EB78;
+				INFOPLIST_FILE = PerformanceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kainosk.PerformanceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		2AB134B6234742CB005D79A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -500,6 +609,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2A180EAC2348702C00ED29EA /* Build configuration list for PBXNativeTarget "PerformanceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A180EAA2348702C00ED29EA /* Debug */,
+				2A180EAB2348702C00ED29EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2AB1349E234742CB005D79A5 /* Build configuration list for PBXProject "SwiftyMIDIParser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
