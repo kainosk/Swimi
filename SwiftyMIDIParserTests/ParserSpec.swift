@@ -1028,5 +1028,92 @@ class ParserSpec: QuickSpec {
                 ]))
             }
         }
+        
+        // MARK: System Exclusive
+        describe("SystemExclusive") {
+            it("normal") {
+                let data: [UInt8] = [
+                    0xF0, 0x43, 0x7F, 0x7F, 0x7F, 0x7F, 0x7F, 0x7F, 0x7F, 0xF7,
+                    0xF0, 0x43, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF7
+                ]
+                subject.input(data: data)
+                expect(systemExclusives).to(equal([
+                    SystemExclusive(rawData: [0xF0, 0x43, 0x7F, 0x7F, 0x7F, 0x7F, 0x7F, 0x7F, 0x7F, 0xF7,]),
+                    SystemExclusive(rawData: [0xF0, 0x43, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF7])
+                ]))
+            }
+            context("when real time message interrupts") {
+                var data: [UInt8]!
+                beforeEach {
+                    data = [
+                        0xF0, 0x43, 0x7F, 0x7F, 0x7F,
+                        0xF8,                         // timing clock
+                        0x7F, 0x7F, 0x7F, 0x7F, 0xF7,
+                        
+                        0xF0, 0x43, 0x00, 0x00, 0x00,
+                        0xFA,                         // start
+                        0xFB,                         // continue
+                        0xFC,                         // stop
+                        0x00, 0x00, 0x00, 0x00, 0xF7,
+                        
+                        0xFD,                         // undefined system realtime message 2
+                        
+                        0xF0,
+                        0xFE,                         // active sensing
+                        0x43,
+                        0xFF,                         // system reset
+                        0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0xF7
+                    ]
+                    subject.input(data: data)
+                }
+                it("parse system exclusive correctly") {
+                    expect(systemExclusives).to(equal([
+                        SystemExclusive(rawData: [0xF0, 0x43, 0x7F, 0x7F, 0x7F, 0x7F, 0x7F, 0x7F, 0x7F, 0xF7]),
+                        SystemExclusive(rawData: [0xF0, 0x43, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF7]),
+                        SystemExclusive(rawData: [0xF0, 0x43, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0xF7])
+                    ]))
+                }
+                it("parse real time message correctly") {
+                    expect(timingClocks).to(equal([TimingClock()]))
+                    expect(starts).to(equal([Start()]))
+                    expect(continues).to(equal([Continue()]))
+                    expect(stops).to(equal([Stop()]))
+                    expect(undefinedSystemRealTimeMessage2s).to(equal([UndefinedSystemRealTimeMessage2()]))
+                    expect(activeSensings).to(equal([ActiveSensing()]))
+                    expect(systemResets).to(equal([SystemReset()]))
+                }
+            }
+            context("large message") {
+                let messageBody = [UInt8](repeating: 0x70, count: 1024 * 1024 * 5)
+                it("parse correctly") {
+                    subject.input(data: [0xF0] + messageBody + [0xF7])
+                    expect(systemExclusives).to(equal([
+                        SystemExclusive(rawData: [0xF0] + messageBody + [0xF7])
+                    ]))
+                }
+                
+                context("and splitted message") {
+                    it("parse correctly") {
+                        let splittedBody = (0..<(1024 * 1024 * 5 / 4)).map { _ in
+                            [0x66, 0x66, 0x66, 0x66] as [UInt8]
+                        }
+                        
+                        subject.input(data: [0xF0])
+                        
+                        splittedBody.forEach {
+                            subject.input(data: $0)
+                        }
+                        
+                        subject.input(data: [0xF7])
+                        
+                        expect(systemExclusives).to(equal([
+                            SystemExclusive(rawData: [0xF0] +
+                                [UInt8](repeating: 0x66, count: 1024 * 1024 * 5) +
+                                [0xF7])
+                        ]))
+                    }
+                }
+            }
+        }
     }
 }
