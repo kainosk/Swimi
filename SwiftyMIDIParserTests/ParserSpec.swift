@@ -21,6 +21,7 @@ class ParserSpec: QuickSpec {
         var controlChanges: [ControlChange]!
         var programChanges: [ProgramChange]!
         var channelPressures: [ChannelPressure]!
+        var pitchBendChanges: [PitchBendChange]!
         var systemExclusives: [SystemExclusive]!
         
         beforeEach {
@@ -32,6 +33,7 @@ class ParserSpec: QuickSpec {
             controlChanges = []
             programChanges = []
             channelPressures = []
+            pitchBendChanges = []
             systemExclusives = []
             
             subject.notifier.noteOff = { noteOffs.append($0) }
@@ -40,6 +42,7 @@ class ParserSpec: QuickSpec {
             subject.notifier.controlChange = { controlChanges.append($0) }
             subject.notifier.programChange = { programChanges.append($0) }
             subject.notifier.channelPressure = { channelPressures.append($0) }
+            subject.notifier.pitchBendChange = { pitchBendChanges.append($0) }
             subject.notifier.systemExclusive = { systemExclusives.append($0) }
         }
         
@@ -481,6 +484,85 @@ class ParserSpec: QuickSpec {
                         subject.input(data: [0xD5, 0])
                         expect(channelPressures).to(equal([
                             ChannelPressure(channel: 5,  pressure: 0)
+                        ]))
+                    }
+                }
+            }
+        }
+        
+        // MARK: Pitch Bend Change
+        describe("PitchBendChange") {
+            it("parse messages even if it contains RunningStatus") {
+                let data: [UInt8] = [
+                    0xE5,   1,    1,
+                    0xE5,   3,    3,
+                            7,    7, // Running Status
+                           15,   15, // Running Status
+                    0xE5,  31,   31,
+                    0xF0,  11, 0xF7, // System Exclusive
+                    0xE5,  63,   63,
+                          127,  127, // Running Status
+                    0xF0,  22, 0xF7, // System Exclusive
+                    0xE5,   0,    0,
+                ]
+                subject.input(data: data)
+                expect(pitchBendChanges).to(equal([
+                    PitchBendChange(channel: 5, lsb:   1, msb:   1),
+                    PitchBendChange(channel: 5, lsb:   3, msb:   3),
+                    PitchBendChange(channel: 5, lsb:   7, msb:   7),
+                    PitchBendChange(channel: 5, lsb:  15, msb:  15),
+                    PitchBendChange(channel: 5, lsb:  31, msb:  31),
+                    PitchBendChange(channel: 5, lsb:  63, msb:  63),
+                    PitchBendChange(channel: 5, lsb: 127, msb: 127),
+                    PitchBendChange(channel: 5, lsb:   0, msb:   0),
+                ]))
+            }
+            describe("range") {
+                context("channel maximum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xEF, 64, 64])
+                        expect(pitchBendChanges).to(equal([
+                            PitchBendChange(channel: 15, lsb: 64, msb: 64)
+                        ]))
+                    }
+                }
+                context("channel minimum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xE0, 64, 64])
+                        expect(pitchBendChanges).to(equal([
+                            PitchBendChange(channel: 0, lsb: 64, msb: 64)
+                        ]))
+                    }
+                }
+                context("lsb maximum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xE5, 127, 64])
+                        expect(pitchBendChanges).to(equal([
+                            PitchBendChange(channel: 5, lsb: 127, msb: 64)
+                        ]))
+                    }
+                }
+                context("lsb minimum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xE5, 0, 64])
+                        expect(pitchBendChanges).to(equal([
+                            PitchBendChange(channel: 5, lsb: 0, msb: 64)
+                        ]))
+                    }
+                }
+                context("msb maximum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xE5, 64, 127])
+                        expect(pitchBendChanges).to(equal([
+                            PitchBendChange(channel: 5, lsb: 64, msb: 127)
+                        ]))
+                    }
+                }
+                context("msb minimum") {
+                    it("can parse correctly") {
+                        subject.input(data: [0xE5, 64, 0])
+                        expect(pitchBendChanges).to(equal([
+                            PitchBendChange(channel: 5, lsb: 64, msb: 0)
                         ]))
                     }
                 }

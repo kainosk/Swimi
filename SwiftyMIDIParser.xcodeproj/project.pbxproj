@@ -15,6 +15,8 @@
 		2A180EB623487D8D00ED29EA /* ControlNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A180EB523487D8D00ED29EA /* ControlNumber.swift */; };
 		2A180EB823488E2D00ED29EA /* ProgramChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A180EB723488E2D00ED29EA /* ProgramChange.swift */; };
 		2A180EBA2348967100ED29EA /* ChannelPressure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A180EB92348967100ED29EA /* ChannelPressure.swift */; };
+		2A180EBC234898DB00ED29EA /* PitchBendChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A180EBB234898DB00ED29EA /* PitchBendChange.swift */; };
+		2A180EBE23489AF000ED29EA /* PitchBendChangeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A180EBD23489AF000ED29EA /* PitchBendChangeSpec.swift */; };
 		2AB134AE234742CB005D79A5 /* SwiftyMIDIParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */; };
 		2AB134B5234742CB005D79A5 /* SwiftyMIDIParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2AB134D223479913005D79A5 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134D023479913005D79A5 /* Nimble.framework */; };
@@ -72,6 +74,8 @@
 		2A180EB523487D8D00ED29EA /* ControlNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlNumber.swift; sourceTree = "<group>"; };
 		2A180EB723488E2D00ED29EA /* ProgramChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramChange.swift; sourceTree = "<group>"; };
 		2A180EB92348967100ED29EA /* ChannelPressure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPressure.swift; sourceTree = "<group>"; };
+		2A180EBB234898DB00ED29EA /* PitchBendChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchBendChange.swift; sourceTree = "<group>"; };
+		2A180EBD23489AF000ED29EA /* PitchBendChangeSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchBendChangeSpec.swift; sourceTree = "<group>"; };
 		2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyMIDIParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyMIDIParser.h; sourceTree = "<group>"; };
 		2AB134A8234742CB005D79A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 				2A180EB523487D8D00ED29EA /* ControlNumber.swift */,
 				2A180EB723488E2D00ED29EA /* ProgramChange.swift */,
 				2A180EB92348967100ED29EA /* ChannelPressure.swift */,
+				2A180EBB234898DB00ED29EA /* PitchBendChange.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 			children = (
 				2AB134B4234742CB005D79A5 /* Info.plist */,
 				2AB134E52347AC1A005D79A5 /* ParserSpec.swift */,
+				2A180EBD23489AF000ED29EA /* PitchBendChangeSpec.swift */,
 			);
 			path = SwiftyMIDIParserTests;
 			sourceTree = "<group>";
@@ -354,6 +360,7 @@
 				2AB134EA234860CC005D79A5 /* Notifier.swift in Sources */,
 				2AB134EC23486152005D79A5 /* Segmentator.swift in Sources */,
 				2A180EB623487D8D00ED29EA /* ControlNumber.swift in Sources */,
+				2A180EBC234898DB00ED29EA /* PitchBendChange.swift in Sources */,
 				2AB134DC2347A327005D79A5 /* Parser.swift in Sources */,
 				2AB134DA23479BC1005D79A5 /* StatusType.swift in Sources */,
 				2A180EBA2348967100ED29EA /* ChannelPressure.swift in Sources */,
@@ -365,6 +372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A180EBE23489AF000ED29EA /* PitchBendChangeSpec.swift in Sources */,
 				2AB134E62347AC1A005D79A5 /* ParserSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
