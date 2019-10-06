@@ -365,6 +365,52 @@ class ParserSpec: QuickSpec {
                     PolyphonicKeyPressure(channel: 5, note:   0, pressure:   0),
                 ]))
             }
+            context("when real time message will interrupt") {
+                beforeEach {
+                    // 5 times "PolyphonicKeyPressure" will be interrupt by 13 times "Start"
+                    let data: [UInt8] = [
+                        0xAA,         // 1st polyphonicKeyPressure
+                        0xFA,
+                               1,
+                        0xFA,
+                                   1,
+                        0xFA,
+                        0xAA,         // 2nd polyphonicKeyPressure
+                        0xFA,
+                               1,
+                        0xFA,
+                                   1,
+                        0xFA,
+                               1,     // 3rd polyphonicKeyPressure (running status)
+                        0xFA,
+                                   1,
+                        0xFA,
+                               1,     // 4th polyphonicKeyPressure (running status)
+                        0xFA,
+                                   1,
+                        0xFA,
+                        0xAA,         // 5th polyphonicKeyPressure
+                        0xFA,
+                               1,
+                        0xFA,
+                                   1,
+                        0xFA
+                    ]
+                    subject.input(data: data)
+                }
+                it("can parse polyphonicKeyPressure correctly") {
+                    expect(polyphonicKeyPressures).to(equal([
+                        PolyphonicKeyPressure(channel: 10, note: 1, pressure: 1),
+                        PolyphonicKeyPressure(channel: 10, note: 1, pressure: 1),
+                        PolyphonicKeyPressure(channel: 10, note: 1, pressure: 1),
+                        PolyphonicKeyPressure(channel: 10, note: 1, pressure: 1),
+                        PolyphonicKeyPressure(channel: 10, note: 1, pressure: 1),
+                    ]))
+                }
+                it("can parse real time message correctly") {
+                    expect(starts).to(equal(.init(repeating: Start(), count: 13)))
+                }
+            }
             describe("range") {
                 context("channel maximum") {
                     it("can parse correctly") {
