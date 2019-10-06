@@ -240,6 +240,52 @@ class ParserSpec: QuickSpec {
                     NoteOff(channel: 6, note:   0, velocity:   0),
                 ]))
             }
+            context("when real time message will interrupt") {
+                beforeEach {
+                    // 5 times NoteOff will be interrupt by 13 times "ActiveSensing"
+                    let data: [UInt8] = [
+                        0x8F,         // 1st noteOff
+                        0xFE,
+                               1,
+                        0xFE,
+                                   1,
+                        0xFE,
+                        0x8F,         // 2nd noteOff
+                        0xFE,
+                               1,
+                        0xFE,
+                                   1,
+                        0xFE,
+                               1,     // 3rd noteOff (running status)
+                        0xFE,
+                                   1,
+                        0xFE,
+                               1,     // 4th noteOff (running status)
+                        0xFE,
+                                   1,
+                        0xFE,
+                        0x8F,         // 5th noteOff
+                        0xFE,
+                               1,
+                        0xFE,
+                                   1,
+                        0xFE
+                    ]
+                    subject.input(data: data)
+                }
+                it("can parse noteOff correctly") {
+                    expect(noteOffs).to(equal([
+                        NoteOff(channel: 15, note: 1, velocity: 1),
+                        NoteOff(channel: 15, note: 1, velocity: 1),
+                        NoteOff(channel: 15, note: 1, velocity: 1),
+                        NoteOff(channel: 15, note: 1, velocity: 1),
+                        NoteOff(channel: 15, note: 1, velocity: 1),
+                    ]))
+                }
+                it("can parse real time message correctly") {
+                    expect(activeSensings).to(equal(.init(repeating: ActiveSensing(), count: 13)))
+                }
+            }
             describe("range") {
                 context("channel maximum") {
                     it("can parse correctly") {
