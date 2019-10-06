@@ -1365,6 +1365,30 @@ class ParserSpec: QuickSpec {
                     TimingClock(),
                 ]))
             }
+            context("when real time message will interrupt") {
+                beforeEach {
+                    // 3 times "TimingClock" will be interrupt by 3 times "SystemReset"
+                    let data: [UInt8] = [
+                        0xF8,         // 1st timingClock
+                        0xFF,
+                        0xF8,         // 2nd timingClock
+                        0xFF,
+                        0xF8,         // 5th timingClock
+                        0xFF,
+                    ]
+                    subject.input(data: data)
+                }
+                it("can parse undefinedSystemCommonMessage correctly") {
+                    expect(timingClocks).to(equal([
+                        TimingClock(),
+                        TimingClock(),
+                        TimingClock(),
+                    ]))
+                }
+                it("can parse real time message correctly") {
+                    expect(systemResets).to(equal(.init(repeating: SystemReset(), count: 3)))
+                }
+            }
         }
         
         // MARK: Undefined System RealTime Message 1
