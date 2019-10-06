@@ -716,6 +716,42 @@ class ParserSpec: QuickSpec {
                     ChannelPressure(channel: 5,  pressure:   0),
                 ]))
             }
+            context("when real time message will interrupt") {
+                beforeEach {
+                    // 5 times "ChannelPressure" will be interrupt by 8 times "UndefinedSystemRealTimeMessage1"
+                    let data: [UInt8] = [
+                        0xD5,         // 1st channelPressure
+                        0xF9,
+                               1,
+                        0xF9,
+                        0xD5,         // 2nd channelPressure
+                        0xF9,
+                               1,
+                        0xF9,
+                               1,     // 3rd channelPressure (running status)
+                        0xF9,
+                               1,     // 4th channelPressure (running status)
+                        0xF9,
+                        0xD5,         // 5th channelPressure
+                        0xF9,
+                               1,
+                        0xF9,
+                    ]
+                    subject.input(data: data)
+                }
+                it("can parse channelPressure correctly") {
+                    expect(channelPressures).to(equal([
+                        ChannelPressure(channel: 5, pressure: 1),
+                        ChannelPressure(channel: 5, pressure: 1),
+                        ChannelPressure(channel: 5, pressure: 1),
+                        ChannelPressure(channel: 5, pressure: 1),
+                        ChannelPressure(channel: 5, pressure: 1),
+                    ]))
+                }
+                it("can parse real time message correctly") {
+                    expect(undefinedSystemRealTimeMessage1s).to(equal(.init(repeating: UndefinedSystemRealTimeMessage1(), count: 8)))
+                }
+            }
             describe("range") {
                 context("channel maximum") {
                     it("can parse correctly") {
