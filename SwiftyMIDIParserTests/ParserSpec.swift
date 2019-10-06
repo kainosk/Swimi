@@ -1151,6 +1151,42 @@ class ParserSpec: QuickSpec {
                     SongSelect(songNumber:   0),
                 ]))
             }
+            context("when real time message will interrupt") {
+                beforeEach {
+                    // 5 times "SongSelect" will be interrupt by 8 times "SystemReset"
+                    let data: [UInt8] = [
+                        0xF3,         // 1st songSelect
+                        0xFF,
+                               1,
+                        0xFF,
+                        0xF3,         // 2nd songSelect
+                        0xFF,
+                               1,
+                        0xFF,
+                               1,     // 3rd songSelect (running status)
+                        0xFF,
+                               1,     // 4th songSelect (running status)
+                        0xFF,
+                        0xF3,         // 5th songSelect
+                        0xFF,
+                               1,
+                        0xFF,
+                    ]
+                    subject.input(data: data)
+                }
+                it("can parse songSelect correctly") {
+                    expect(songSelects).to(equal([
+                        SongSelect(songNumber: 1),
+                        SongSelect(songNumber: 1),
+                        SongSelect(songNumber: 1),
+                        SongSelect(songNumber: 1),
+                        SongSelect(songNumber: 1),
+                    ]))
+                }
+                it("can parse real time message correctly") {
+                    expect(systemResets).to(equal(.init(repeating: SystemReset(), count: 8)))
+                }
+            }
             describe("range") {
                 context("songNumber number maximum") {
                     it("can parse correctly") {
