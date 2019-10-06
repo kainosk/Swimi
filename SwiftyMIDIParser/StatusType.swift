@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum StatusType {
+public enum StatusType: CaseIterable {
     
     // MARK: Channel Voice Message
     case noteOn
