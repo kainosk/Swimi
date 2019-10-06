@@ -32,6 +32,14 @@
 		2A37D2702348E96200DF807A /* SystemReset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D26F2348E96200DF807A /* SystemReset.swift */; };
 		2A37D2722349ECF700DF807A /* StatusTypeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D2712349ECF700DF807A /* StatusTypeSpec.swift */; };
 		2A37D2742349F91400DF807A /* NotifierSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D2732349F91400DF807A /* NotifierSpec.swift */; };
+		2A37D27E234A493C00DF807A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D27D234A493C00DF807A /* AppDelegate.swift */; };
+		2A37D280234A493C00DF807A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D27F234A493C00DF807A /* SceneDelegate.swift */; };
+		2A37D282234A493C00DF807A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D281234A493C00DF807A /* ContentView.swift */; };
+		2A37D284234A493E00DF807A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A37D283234A493E00DF807A /* Assets.xcassets */; };
+		2A37D287234A493E00DF807A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A37D286234A493E00DF807A /* Preview Assets.xcassets */; };
+		2A37D28A234A493E00DF807A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A37D288234A493E00DF807A /* LaunchScreen.storyboard */; };
+		2A37D295234A493E00DF807A /* SwiftyMIDIParserExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D294234A493E00DF807A /* SwiftyMIDIParserExampleTests.swift */; };
+		2A37D2A0234A493E00DF807A /* SwiftyMIDIParserExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D29F234A493E00DF807A /* SwiftyMIDIParserExampleUITests.swift */; };
 		2AB134AE234742CB005D79A5 /* SwiftyMIDIParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */; };
 		2AB134B5234742CB005D79A5 /* SwiftyMIDIParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2AB134D223479913005D79A5 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134D023479913005D79A5 /* Nimble.framework */; };
@@ -57,6 +65,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2AB134A3234742CB005D79A5;
 			remoteInfo = SwiftyMIDIParser;
+		};
+		2A37D291234A493E00DF807A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AB1349B234742CB005D79A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A37D27A234A493C00DF807A;
+			remoteInfo = SwiftyMIDIParserExample;
+		};
+		2A37D29C234A493E00DF807A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AB1349B234742CB005D79A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A37D27A234A493C00DF807A;
+			remoteInfo = SwiftyMIDIParserExample;
 		};
 		2AB134AF234742CB005D79A5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -108,6 +130,20 @@
 		2A37D26F2348E96200DF807A /* SystemReset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemReset.swift; sourceTree = "<group>"; };
 		2A37D2712349ECF700DF807A /* StatusTypeSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTypeSpec.swift; sourceTree = "<group>"; };
 		2A37D2732349F91400DF807A /* NotifierSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifierSpec.swift; sourceTree = "<group>"; };
+		2A37D27B234A493C00DF807A /* SwiftyMIDIParserExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyMIDIParserExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A37D27D234A493C00DF807A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2A37D27F234A493C00DF807A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		2A37D281234A493C00DF807A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2A37D283234A493E00DF807A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2A37D286234A493E00DF807A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2A37D289234A493E00DF807A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2A37D28B234A493E00DF807A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A37D290234A493E00DF807A /* SwiftyMIDIParserExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyMIDIParserExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A37D294234A493E00DF807A /* SwiftyMIDIParserExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyMIDIParserExampleTests.swift; sourceTree = "<group>"; };
+		2A37D296234A493E00DF807A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A37D29B234A493E00DF807A /* SwiftyMIDIParserExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyMIDIParserExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A37D29F234A493E00DF807A /* SwiftyMIDIParserExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyMIDIParserExampleUITests.swift; sourceTree = "<group>"; };
+		2A37D2A1234A493E00DF807A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyMIDIParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyMIDIParser.h; sourceTree = "<group>"; };
 		2AB134A8234742CB005D79A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -134,6 +170,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A180EA72348702C00ED29EA /* SwiftyMIDIParser.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A37D278234A493C00DF807A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A37D28D234A493E00DF807A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A37D298234A493E00DF807A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,12 +254,55 @@
 			path = Message;
 			sourceTree = "<group>";
 		};
+		2A37D27C234A493C00DF807A /* SwiftyMIDIParserExample */ = {
+			isa = PBXGroup;
+			children = (
+				2A37D27D234A493C00DF807A /* AppDelegate.swift */,
+				2A37D27F234A493C00DF807A /* SceneDelegate.swift */,
+				2A37D281234A493C00DF807A /* ContentView.swift */,
+				2A37D283234A493E00DF807A /* Assets.xcassets */,
+				2A37D288234A493E00DF807A /* LaunchScreen.storyboard */,
+				2A37D28B234A493E00DF807A /* Info.plist */,
+				2A37D285234A493E00DF807A /* Preview Content */,
+			);
+			path = SwiftyMIDIParserExample;
+			sourceTree = "<group>";
+		};
+		2A37D285234A493E00DF807A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2A37D286234A493E00DF807A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2A37D293234A493E00DF807A /* SwiftyMIDIParserExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				2A37D294234A493E00DF807A /* SwiftyMIDIParserExampleTests.swift */,
+				2A37D296234A493E00DF807A /* Info.plist */,
+			);
+			path = SwiftyMIDIParserExampleTests;
+			sourceTree = "<group>";
+		};
+		2A37D29E234A493E00DF807A /* SwiftyMIDIParserExampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2A37D29F234A493E00DF807A /* SwiftyMIDIParserExampleUITests.swift */,
+				2A37D2A1234A493E00DF807A /* Info.plist */,
+			);
+			path = SwiftyMIDIParserExampleUITests;
+			sourceTree = "<group>";
+		};
 		2AB1349A234742CB005D79A5 = {
 			isa = PBXGroup;
 			children = (
 				2AB134A6234742CB005D79A5 /* SwiftyMIDIParser */,
 				2AB134B1234742CB005D79A5 /* SwiftyMIDIParserTests */,
 				2A180EA32348702C00ED29EA /* PerformanceTests */,
+				2A37D27C234A493C00DF807A /* SwiftyMIDIParserExample */,
+				2A37D293234A493E00DF807A /* SwiftyMIDIParserExampleTests */,
+				2A37D29E234A493E00DF807A /* SwiftyMIDIParserExampleUITests */,
 				2AB134A5234742CB005D79A5 /* Products */,
 				2AB134CF23479913005D79A5 /* Frameworks */,
 			);
@@ -214,6 +314,9 @@
 				2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */,
 				2AB134AD234742CB005D79A5 /* SwiftyMIDIParserTests.xctest */,
 				2A180EA22348702C00ED29EA /* PerformanceTests.xctest */,
+				2A37D27B234A493C00DF807A /* SwiftyMIDIParserExample.app */,
+				2A37D290234A493E00DF807A /* SwiftyMIDIParserExampleTests.xctest */,
+				2A37D29B234A493E00DF807A /* SwiftyMIDIParserExampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -286,6 +389,59 @@
 			productReference = 2A180EA22348702C00ED29EA /* PerformanceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		2A37D27A234A493C00DF807A /* SwiftyMIDIParserExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A37D2A2234A493E00DF807A /* Build configuration list for PBXNativeTarget "SwiftyMIDIParserExample" */;
+			buildPhases = (
+				2A37D277234A493C00DF807A /* Sources */,
+				2A37D278234A493C00DF807A /* Frameworks */,
+				2A37D279234A493C00DF807A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftyMIDIParserExample;
+			productName = SwiftyMIDIParserExample;
+			productReference = 2A37D27B234A493C00DF807A /* SwiftyMIDIParserExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2A37D28F234A493E00DF807A /* SwiftyMIDIParserExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A37D2A5234A493E00DF807A /* Build configuration list for PBXNativeTarget "SwiftyMIDIParserExampleTests" */;
+			buildPhases = (
+				2A37D28C234A493E00DF807A /* Sources */,
+				2A37D28D234A493E00DF807A /* Frameworks */,
+				2A37D28E234A493E00DF807A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A37D292234A493E00DF807A /* PBXTargetDependency */,
+			);
+			name = SwiftyMIDIParserExampleTests;
+			productName = SwiftyMIDIParserExampleTests;
+			productReference = 2A37D290234A493E00DF807A /* SwiftyMIDIParserExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2A37D29A234A493E00DF807A /* SwiftyMIDIParserExampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A37D2A8234A493E00DF807A /* Build configuration list for PBXNativeTarget "SwiftyMIDIParserExampleUITests" */;
+			buildPhases = (
+				2A37D297234A493E00DF807A /* Sources */,
+				2A37D298234A493E00DF807A /* Frameworks */,
+				2A37D299234A493E00DF807A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A37D29D234A493E00DF807A /* PBXTargetDependency */,
+			);
+			name = SwiftyMIDIParserExampleUITests;
+			productName = SwiftyMIDIParserExampleUITests;
+			productReference = 2A37D29B234A493E00DF807A /* SwiftyMIDIParserExampleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		2AB134A3234742CB005D79A5 /* SwiftyMIDIParser */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2AB134B8234742CB005D79A5 /* Build configuration list for PBXNativeTarget "SwiftyMIDIParser" */;
@@ -336,6 +492,17 @@
 					2A180EA12348702C00ED29EA = {
 						CreatedOnToolsVersion = 11.0;
 					};
+					2A37D27A234A493C00DF807A = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					2A37D28F234A493E00DF807A = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 2A37D27A234A493C00DF807A;
+					};
+					2A37D29A234A493E00DF807A = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 2A37D27A234A493C00DF807A;
+					};
 					2AB134A3234742CB005D79A5 = {
 						CreatedOnToolsVersion = 11.0;
 						LastSwiftMigration = 1100;
@@ -361,12 +528,39 @@
 				2AB134A3234742CB005D79A5 /* SwiftyMIDIParser */,
 				2AB134AC234742CB005D79A5 /* SwiftyMIDIParserTests */,
 				2A180EA12348702C00ED29EA /* PerformanceTests */,
+				2A37D27A234A493C00DF807A /* SwiftyMIDIParserExample */,
+				2A37D28F234A493E00DF807A /* SwiftyMIDIParserExampleTests */,
+				2A37D29A234A493E00DF807A /* SwiftyMIDIParserExampleUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2A180EA02348702C00ED29EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A37D279234A493C00DF807A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A37D28A234A493E00DF807A /* LaunchScreen.storyboard in Resources */,
+				2A37D287234A493E00DF807A /* Preview Assets.xcassets in Resources */,
+				2A37D284234A493E00DF807A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A37D28E234A493E00DF807A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A37D299234A493E00DF807A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -395,6 +589,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A180EAD234870CD00ED29EA /* PerformanceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A37D277234A493C00DF807A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A37D27E234A493C00DF807A /* AppDelegate.swift in Sources */,
+				2A37D280234A493C00DF807A /* SceneDelegate.swift in Sources */,
+				2A37D282234A493C00DF807A /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A37D28C234A493E00DF807A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A37D295234A493E00DF807A /* SwiftyMIDIParserExampleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A37D297234A493E00DF807A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A37D2A0234A493E00DF807A /* SwiftyMIDIParserExampleUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,12 +673,33 @@
 			target = 2AB134A3234742CB005D79A5 /* SwiftyMIDIParser */;
 			targetProxy = 2A180EA82348702C00ED29EA /* PBXContainerItemProxy */;
 		};
+		2A37D292234A493E00DF807A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A37D27A234A493C00DF807A /* SwiftyMIDIParserExample */;
+			targetProxy = 2A37D291234A493E00DF807A /* PBXContainerItemProxy */;
+		};
+		2A37D29D234A493E00DF807A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A37D27A234A493C00DF807A /* SwiftyMIDIParserExample */;
+			targetProxy = 2A37D29C234A493E00DF807A /* PBXContainerItemProxy */;
+		};
 		2AB134B0234742CB005D79A5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2AB134A3234742CB005D79A5 /* SwiftyMIDIParser */;
 			targetProxy = 2AB134AF234742CB005D79A5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2A37D288234A493E00DF807A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A37D289234A493E00DF807A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2A180EAA2348702C00ED29EA /* Debug */ = {
@@ -494,6 +735,130 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2A37D2A3234A493E00DF807A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"SwiftyMIDIParserExample/Preview Content\"";
+				DEVELOPMENT_TEAM = LMSP24EB78;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = SwiftyMIDIParserExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kainosk.SwiftyMIDIParserExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2A37D2A4234A493E00DF807A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"SwiftyMIDIParserExample/Preview Content\"";
+				DEVELOPMENT_TEAM = LMSP24EB78;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = SwiftyMIDIParserExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kainosk.SwiftyMIDIParserExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2A37D2A6234A493E00DF807A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LMSP24EB78;
+				INFOPLIST_FILE = SwiftyMIDIParserExampleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kainosk.SwiftyMIDIParserExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftyMIDIParserExample.app/SwiftyMIDIParserExample";
+			};
+			name = Debug;
+		};
+		2A37D2A7234A493E00DF807A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LMSP24EB78;
+				INFOPLIST_FILE = SwiftyMIDIParserExampleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kainosk.SwiftyMIDIParserExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftyMIDIParserExample.app/SwiftyMIDIParserExample";
+			};
+			name = Release;
+		};
+		2A37D2A9234A493E00DF807A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LMSP24EB78;
+				INFOPLIST_FILE = SwiftyMIDIParserExampleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kainosk.SwiftyMIDIParserExampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SwiftyMIDIParserExample;
+			};
+			name = Debug;
+		};
+		2A37D2AA234A493E00DF807A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LMSP24EB78;
+				INFOPLIST_FILE = SwiftyMIDIParserExampleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kainosk.SwiftyMIDIParserExampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SwiftyMIDIParserExample;
 			};
 			name = Release;
 		};
@@ -722,6 +1087,33 @@
 			buildConfigurations = (
 				2A180EAA2348702C00ED29EA /* Debug */,
 				2A180EAB2348702C00ED29EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A37D2A2234A493E00DF807A /* Build configuration list for PBXNativeTarget "SwiftyMIDIParserExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A37D2A3234A493E00DF807A /* Debug */,
+				2A37D2A4234A493E00DF807A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A37D2A5234A493E00DF807A /* Build configuration list for PBXNativeTarget "SwiftyMIDIParserExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A37D2A6234A493E00DF807A /* Debug */,
+				2A37D2A7234A493E00DF807A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A37D2A8234A493E00DF807A /* Build configuration list for PBXNativeTarget "SwiftyMIDIParserExampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A37D2A9234A493E00DF807A /* Debug */,
+				2A37D2AA234A493E00DF807A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
