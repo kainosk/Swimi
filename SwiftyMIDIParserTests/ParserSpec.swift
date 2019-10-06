@@ -1319,6 +1319,30 @@ class ParserSpec: QuickSpec {
                     TuneRequest(),
                 ]))
             }
+            context("when real time message will interrupt") {
+                beforeEach {
+                    // 3 times "TuneRequest" will be interrupt by 3 times "SystemReset"
+                    let data: [UInt8] = [
+                        0xF6,         // 1st tuneRequest
+                        0xFF,
+                        0xF6,         // 2nd tuneRequest
+                        0xFF,
+                        0xF6,         // 5th tuneRequest
+                        0xFF,
+                    ]
+                    subject.input(data: data)
+                }
+                it("can parse undefinedSystemCommonMessage correctly") {
+                    expect(tuneRequests).to(equal([
+                        TuneRequest(),
+                        TuneRequest(),
+                        TuneRequest(),
+                    ]))
+                }
+                it("can parse real time message correctly") {
+                    expect(systemResets).to(equal(.init(repeating: SystemReset(), count: 3)))
+                }
+            }
         }
         
         // MARK: Timing Clock
