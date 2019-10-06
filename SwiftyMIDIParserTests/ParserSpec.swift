@@ -1503,6 +1503,30 @@ class ParserSpec: QuickSpec {
                     Start(),
                 ]))
             }
+            context("when real time message will interrupt") {
+                beforeEach {
+                    // 3 times "Start" will be interrupt by 3 times "SystemReset"
+                    let data: [UInt8] = [
+                        0xFA,         // 1st start
+                        0xFF,
+                        0xFA,         // 2nd start
+                        0xFF,
+                        0xFA,         // 5th start
+                        0xFF,
+                    ]
+                    subject.input(data: data)
+                }
+                it("can parse undefinedSystemCommonMessage correctly") {
+                    expect(starts).to(equal([
+                        Start(),
+                        Start(),
+                        Start(),
+                    ]))
+                }
+                it("can parse real time message correctly") {
+                    expect(systemResets).to(equal(.init(repeating: SystemReset(), count: 3)))
+                }
+            }
         }
         
         // MARK: Continue
@@ -1524,6 +1548,30 @@ class ParserSpec: QuickSpec {
                     Continue(),
                     Continue(),
                 ]))
+            }
+            context("when real time message will interrupt") {
+                beforeEach {
+                    // 3 times "Continue" will be interrupt by 3 times "SystemReset"
+                    let data: [UInt8] = [
+                        0xFB,         // 1st continue
+                        0xFF,
+                        0xFB,         // 2nd continue
+                        0xFF,
+                        0xFB,         // 5th continue
+                        0xFF,
+                    ]
+                    subject.input(data: data)
+                }
+                it("can parse undefinedSystemCommonMessage correctly") {
+                    expect(continues).to(equal([
+                        Continue(),
+                        Continue(),
+                        Continue(),
+                    ]))
+                }
+                it("can parse real time message correctly") {
+                    expect(systemResets).to(equal(.init(repeating: SystemReset(), count: 3)))
+                }
             }
         }
         
@@ -1547,6 +1595,30 @@ class ParserSpec: QuickSpec {
                     Stop(),
                 ]))
             }
+            context("when real time message will interrupt") {
+                beforeEach {
+                    // 3 times "Stop" will be interrupt by 3 times "SystemReset"
+                    let data: [UInt8] = [
+                        0xFC,         // 1st stop
+                        0xFF,
+                        0xFC,         // 2nd stop
+                        0xFF,
+                        0xFC,         // 5th stop
+                        0xFF,
+                    ]
+                    subject.input(data: data)
+                }
+                it("can parse undefinedSystemCommonMessage correctly") {
+                    expect(stops).to(equal([
+                        Stop(),
+                        Stop(),
+                        Stop(),
+                    ]))
+                }
+                it("can parse real time message correctly") {
+                    expect(systemResets).to(equal(.init(repeating: SystemReset(), count: 3)))
+                }
+            }
         }
         
         // MARK: ActiveSensing
@@ -1569,6 +1641,30 @@ class ParserSpec: QuickSpec {
                     ActiveSensing(),
                 ]))
             }
+            context("when real time message will interrupt") {
+                beforeEach {
+                    // 3 times "ActiveSensing" will be interrupt by 3 times "SystemReset"
+                    let data: [UInt8] = [
+                        0xFE,         // 1st activeSensing
+                        0xFF,
+                        0xFE,         // 2nd activeSensing
+                        0xFF,
+                        0xFE,         // 5th activeSensing
+                        0xFF,
+                    ]
+                    subject.input(data: data)
+                }
+                it("can parse undefinedSystemCommonMessage correctly") {
+                    expect(activeSensings).to(equal([
+                        ActiveSensing(),
+                        ActiveSensing(),
+                        ActiveSensing(),
+                    ]))
+                }
+                it("can parse real time message correctly") {
+                    expect(systemResets).to(equal(.init(repeating: SystemReset(), count: 3)))
+                }
+            }
         }
         
         // MARK: SystemReset
@@ -1590,6 +1686,30 @@ class ParserSpec: QuickSpec {
                     SystemReset(),
                     SystemReset(),
                 ]))
+            }
+            context("when real time message will interrupt") {
+                beforeEach {
+                    // 3 times "SystemReset" will be interrupt by 3 times "SystemReset"
+                    let data: [UInt8] = [
+                        0xFF,         // 1st systemReset
+                        0xF8,
+                        0xFF,         // 2nd systemReset
+                        0xF8,
+                        0xFF,         // 5th systemReset
+                        0xF8,
+                    ]
+                    subject.input(data: data)
+                }
+                it("can parse undefinedSystemCommonMessage correctly") {
+                    expect(systemResets).to(equal([
+                        SystemReset(),
+                        SystemReset(),
+                        SystemReset(),
+                    ]))
+                }
+                it("can parse real time message correctly") {
+                    expect(timingClocks).to(equal(.init(repeating: TimingClock(), count: 3)))
+                }
             }
         }
         
