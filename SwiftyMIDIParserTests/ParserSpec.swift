@@ -815,6 +815,52 @@ class ParserSpec: QuickSpec {
                     PitchBendChange(channel: 5, lsb:   0, msb:   0),
                 ]))
             }
+            context("when real time message will interrupt") {
+                beforeEach {
+                    // 5 times "PitchBendChange" will be interrupt by 13 times "UndefinedSystemRealTimeMessage2"
+                    let data: [UInt8] = [
+                        0xE5,         // 1st pitchBendChange
+                        0xFD,
+                               1,
+                        0xFD,
+                                   1,
+                        0xFD,
+                        0xE5,         // 2nd pitchBendChange
+                        0xFD,
+                               1,
+                        0xFD,
+                                   1,
+                        0xFD,
+                               1,     // 3rd pitchBendChange (running status)
+                        0xFD,
+                                   1,
+                        0xFD,
+                               1,     // 4th pitchBendChange (running status)
+                        0xFD,
+                                   1,
+                        0xFD,
+                        0xE5,         // 5th pitchBendChange
+                        0xFD,
+                               1,
+                        0xFD,
+                                   1,
+                        0xFD
+                    ]
+                    subject.input(data: data)
+                }
+                it("can parse pitchBendChange correctly") {
+                    expect(pitchBendChanges).to(equal([
+                        PitchBendChange(channel: 5, lsb: 1, msb: 1),
+                        PitchBendChange(channel: 5, lsb: 1, msb: 1),
+                        PitchBendChange(channel: 5, lsb: 1, msb: 1),
+                        PitchBendChange(channel: 5, lsb: 1, msb: 1),
+                        PitchBendChange(channel: 5, lsb: 1, msb: 1),
+                    ]))
+                }
+                it("can parse real time message correctly") {
+                    expect(undefinedSystemRealTimeMessage2s).to(equal(.init(repeating: UndefinedSystemRealTimeMessage2(), count: 13)))
+                }
+            }
             describe("range") {
                 context("channel maximum") {
                     it("can parse correctly") {
