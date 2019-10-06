@@ -1227,6 +1227,30 @@ class ParserSpec: QuickSpec {
                     UndefinedSystemCommonMessage1(),
                 ]))
             }
+           context("when real time message will interrupt") {
+                beforeEach {
+                    // 3 times "UndefinedSystemCommonMessage1" will be interrupt by 3 times "SystemReset"
+                    let data: [UInt8] = [
+                        0xF4,         // 1st undefinedSystemCommonMessage1
+                        0xFF,
+                        0xF4,         // 2nd undefinedSystemCommonMessage1
+                        0xFF,
+                        0xF4,         // 5th undefinedSystemCommonMessage1
+                        0xFF,
+                    ]
+                    subject.input(data: data)
+                }
+                it("can parse undefinedSystemCommonMessage correctly") {
+                    expect(undefinedSystemCommonMessage1s).to(equal([
+                        UndefinedSystemCommonMessage1(),
+                        UndefinedSystemCommonMessage1(),
+                        UndefinedSystemCommonMessage1(),
+                    ]))
+                }
+                it("can parse real time message correctly") {
+                    expect(systemResets).to(equal(.init(repeating: SystemReset(), count: 3)))
+                }
+            }
         }
         
         // MARK: Undefined System Common Message 2
@@ -1248,6 +1272,30 @@ class ParserSpec: QuickSpec {
                     UndefinedSystemCommonMessage2(),
                     UndefinedSystemCommonMessage2(),
                 ]))
+            }
+            context("when real time message will interrupt") {
+                beforeEach {
+                    // 3 times "UndefinedSystemCommonMessage2" will be interrupt by 3 times "SystemReset"
+                    let data: [UInt8] = [
+                        0xF5,         // 1st undefinedSystemCommonMessage2
+                        0xFF,
+                        0xF5,         // 2nd undefinedSystemCommonMessage2
+                        0xFF,
+                        0xF5,         // 5th undefinedSystemCommonMessage2
+                        0xFF,
+                    ]
+                    subject.input(data: data)
+                }
+                it("can parse undefinedSystemCommonMessage correctly") {
+                    expect(undefinedSystemCommonMessage2s).to(equal([
+                        UndefinedSystemCommonMessage2(),
+                        UndefinedSystemCommonMessage2(),
+                        UndefinedSystemCommonMessage2(),
+                    ]))
+                }
+                it("can parse real time message correctly") {
+                    expect(systemResets).to(equal(.init(repeating: SystemReset(), count: 3)))
+                }
             }
         }
         
