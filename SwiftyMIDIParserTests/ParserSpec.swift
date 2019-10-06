@@ -943,6 +943,42 @@ class ParserSpec: QuickSpec {
                     TimeCodeQuarterFrame(messageType: .timeCountUpper4bit,   value: 15),
                 ]))
             }
+            context("when real time message will interrupt") {
+                beforeEach {
+                    // 5 times "TimeCodeQuarterFrame" will be interrupt by 8 times "SystemReset"
+                    let data: [UInt8] = [
+                        0xF1,         // 1st timeCodeQuarterFrame
+                        0xFF,
+                               0x11,
+                        0xFF,
+                        0xF1,         // 2nd timeCodeQuarterFrame
+                        0xFF,
+                               0x11,
+                        0xFF,
+                               0x11,  // 3rd timeCodeQuarterFrame (running status)
+                        0xFF,
+                               0x11,  // 4th timeCodeQuarterFrame (running status)
+                        0xFF,
+                        0xF1,         // 5th timeCodeQuarterFrame
+                        0xFF,
+                               0x11,
+                        0xFF,
+                    ]
+                    subject.input(data: data)
+                }
+                it("can parse timeCodeQuarterFrame correctly") {
+                    expect(timeCodeQuarterFrames).to(equal([
+                        TimeCodeQuarterFrame(messageType: .frameCountUpper4bit, value: 1),
+                        TimeCodeQuarterFrame(messageType: .frameCountUpper4bit, value: 1),
+                        TimeCodeQuarterFrame(messageType: .frameCountUpper4bit, value: 1),
+                        TimeCodeQuarterFrame(messageType: .frameCountUpper4bit, value: 1),
+                        TimeCodeQuarterFrame(messageType: .frameCountUpper4bit, value: 1),
+                    ]))
+                }
+                it("can parse real time message correctly") {
+                    expect(systemResets).to(equal(.init(repeating: SystemReset(), count: 8)))
+                }
+            }
             describe("range") {
                 context("messageType maximum") {
                     it("can parse correctly") {
