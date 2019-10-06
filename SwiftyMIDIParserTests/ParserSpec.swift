@@ -617,6 +617,42 @@ class ParserSpec: QuickSpec {
                     ProgramChange(channel: 5,  program:   0),
                 ]))
             }
+            context("when real time message will interrupt") {
+                beforeEach {
+                    // 5 times "ProgramChange" will be interrupt by 8 times "SystemReset"
+                    let data: [UInt8] = [
+                        0xC5,         // 1st programChange
+                        0xFF,
+                               1,
+                        0xFF,
+                        0xC5,         // 2nd programChange
+                        0xFF,
+                               1,
+                        0xFF,
+                               1,     // 3rd programChange (running status)
+                        0xFF,
+                               1,     // 4th programChange (running status)
+                        0xFF,
+                        0xC5,         // 5th programChange
+                        0xFF,
+                               1,
+                        0xFF,
+                    ]
+                    subject.input(data: data)
+                }
+                it("can parse programChange correctly") {
+                    expect(programChanges).to(equal([
+                        ProgramChange(channel: 5, program: 1),
+                        ProgramChange(channel: 5, program: 1),
+                        ProgramChange(channel: 5, program: 1),
+                        ProgramChange(channel: 5, program: 1),
+                        ProgramChange(channel: 5, program: 1),
+                    ]))
+                }
+                it("can parse real time message correctly") {
+                    expect(systemResets).to(equal(.init(repeating: SystemReset(), count: 8)))
+                }
+            }
             describe("range") {
                 context("channel maximum") {
                     it("can parse correctly") {
