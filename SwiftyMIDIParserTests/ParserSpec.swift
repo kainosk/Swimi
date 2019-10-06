@@ -1042,6 +1042,52 @@ class ParserSpec: QuickSpec {
                     SongPositionPointer(lsb:   0, msb:   0),
                 ]))
             }
+            context("when real time message will interrupt") {
+                beforeEach {
+                    // 5 times "SongPositionPointer" will be interrupt by 13 times "UndefinedSystemRealTimeMessage2"
+                    let data: [UInt8] = [
+                        0xF2,         // 1st songPositionPointer
+                        0xFD,
+                               1,
+                        0xFD,
+                                   1,
+                        0xFD,
+                        0xF2,         // 2nd songPositionPointer
+                        0xFD,
+                               1,
+                        0xFD,
+                                   1,
+                        0xFD,
+                               1,     // 3rd songPositionPointer (running status)
+                        0xFD,
+                                   1,
+                        0xFD,
+                               1,     // 4th songPositionPointer (running status)
+                        0xFD,
+                                   1,
+                        0xFD,
+                        0xF2,         // 5th songPositionPointer
+                        0xFD,
+                               1,
+                        0xFD,
+                                   1,
+                        0xFD
+                    ]
+                    subject.input(data: data)
+                }
+                it("can parse songPositionPointer correctly") {
+                    expect(songPositionPointers).to(equal([
+                        SongPositionPointer(lsb: 1, msb: 1),
+                        SongPositionPointer(lsb: 1, msb: 1),
+                        SongPositionPointer(lsb: 1, msb: 1),
+                        SongPositionPointer(lsb: 1, msb: 1),
+                        SongPositionPointer(lsb: 1, msb: 1),
+                    ]))
+                }
+                it("can parse real time message correctly") {
+                    expect(undefinedSystemRealTimeMessage2s).to(equal(.init(repeating: UndefinedSystemRealTimeMessage2(), count: 13)))
+                }
+            }
             describe("range") {
                 context("lsb maximum") {
                     it("can parse correctly") {
