@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum DataSize {
+enum DataSize: Equatable {
     case fixed(Int)
     case variable
 }
