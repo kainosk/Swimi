@@ -45,7 +45,6 @@
 		2AB134E62347AC1A005D79A5 /* ParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB134E52347AC1A005D79A5 /* ParserSpec.swift */; };
 		2AB134E8234847FE005D79A5 /* DataSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB134E7234847FE005D79A5 /* DataSize.swift */; };
 		2AB134EA234860CC005D79A5 /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB134E9234860CC005D79A5 /* Notifier.swift */; };
-		2AB134EC23486152005D79A5 /* Segmentator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB134EB23486152005D79A5 /* Segmentator.swift */; };
 		2AC9056A2348A04E00EDAEDC /* TimeCodeQuarterFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC905692348A04E00EDAEDC /* TimeCodeQuarterFrame.swift */; };
 		2AC9056C2348A42300EDAEDC /* TimeCodeQuarterFrameMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC9056B2348A42300EDAEDC /* TimeCodeQuarterFrameMessageType.swift */; };
 		2AC9056E2348A73700EDAEDC /* TimeCodeQuarterFrameMessageTypeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC9056D2348A73700EDAEDC /* TimeCodeQuarterFrameMessageTypeSpec.swift */; };
@@ -123,7 +122,6 @@
 		2AB134E52347AC1A005D79A5 /* ParserSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserSpec.swift; sourceTree = "<group>"; };
 		2AB134E7234847FE005D79A5 /* DataSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSize.swift; sourceTree = "<group>"; };
 		2AB134E9234860CC005D79A5 /* Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
-		2AB134EB23486152005D79A5 /* Segmentator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segmentator.swift; sourceTree = "<group>"; };
 		2AB134ED23486C81005D79A5 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PerformanceTests.swift; path = ../SwiftyMIDIParserTests/PerformanceTests.swift; sourceTree = "<group>"; };
 		2AC905692348A04E00EDAEDC /* TimeCodeQuarterFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCodeQuarterFrame.swift; sourceTree = "<group>"; };
 		2AC9056B2348A42300EDAEDC /* TimeCodeQuarterFrameMessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCodeQuarterFrameMessageType.swift; sourceTree = "<group>"; };
@@ -230,7 +228,6 @@
 				2AB134DB2347A327005D79A5 /* Parser.swift */,
 				2AB134E7234847FE005D79A5 /* DataSize.swift */,
 				2AB134E9234860CC005D79A5 /* Notifier.swift */,
-				2AB134EB23486152005D79A5 /* Segmentator.swift */,
 			);
 			path = SwiftyMIDIParser;
 			sourceTree = "<group>";
@@ -421,7 +418,6 @@
 				2A37D26C2348E92200DF807A /* Stop.swift in Sources */,
 				2AB134E22347A579005D79A5 /* SystemExclusive.swift in Sources */,
 				2AB134EA234860CC005D79A5 /* Notifier.swift in Sources */,
-				2AB134EC23486152005D79A5 /* Segmentator.swift in Sources */,
 				2A180EB623487D8D00ED29EA /* ControlNumber.swift in Sources */,
 				2A180EBC234898DB00ED29EA /* PitchBendChange.swift in Sources */,
 				2A37D25C2348E13F00DF807A /* UndefinedSystemCommonMessage1.swift in Sources */,
