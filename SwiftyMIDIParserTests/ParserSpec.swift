@@ -1799,5 +1799,38 @@ class ParserSpec: QuickSpec {
                 }
             }
         }
+        
+        describe("MIDI protocol violation") {
+            context("when pass non-status bytes before status") {
+                it("ignores these element (does not crash)") {
+                    subject.input(data: [0x7F, 0x7F, 0x7F])
+                }
+                context("then pass normal data (e.g. noteOn)") {
+                    it("can parse normal data") {
+                        subject.input(data: [
+                            0x7F, 0x7F, 0x7F, // violation
+                            0x9F,   15,   15  // correct noteOn
+                        ])
+                        expect(noteOns).to(equal([
+                            NoteOn(channel: 15, note: 15, velocity: 15)
+                        ]))
+                    }
+                }
+            }
+            
+            context("when pass new status byte before previous parsing completed") {
+                it("does not crash and parse new message correctly") {
+                    subject.input(data: [
+                        0x9F,   15,       // Incomplete noteOn.
+                        0x8F,   15,  15   // noteOff
+                    ])
+                    
+                    expect(noteOns).to(beEmpty())
+                    expect(noteOffs).to(equal([
+                        NoteOff(channel: 15, note: 15, velocity: 15)
+                    ]))
+                }
+            }
+        }
     }
 }
