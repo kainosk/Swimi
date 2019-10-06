@@ -115,6 +115,52 @@ class ParserSpec: QuickSpec {
                     NoteOn(channel: 5, note:   0, velocity:   0),
                 ]))
             }
+            context("real time message interrupt") {
+                beforeEach {
+                    // 5 times NoteOn will be interrupt by 13 times "TimingClock"
+                    let data: [UInt8] = [
+                        0x99,         // 1st noteOn
+                        0xF8,
+                               1,
+                        0xF8,
+                                   1,
+                        0xF8,
+                        0x99,         // 2nd noteOn
+                        0xF8,
+                               1,
+                        0xF8,
+                                   1,
+                        0xF8,
+                               1,     // 3rd noteOn (running status)
+                        0xF8,
+                                   1,
+                        0xF8,
+                               1,     // 4th noteOn (running status)
+                        0xF8,
+                                   1,
+                        0xF8,
+                        0x99,         // 5th noteOn
+                        0xF8,
+                               1,
+                        0xF8,
+                                   1,
+                        0xF8
+                    ]
+                    subject.input(data: data)
+                }
+                it("can parse noteOn correctly") {
+                    expect(noteOns).to(equal([
+                        NoteOn(channel: 9, note: 1, velocity: 1),
+                        NoteOn(channel: 9, note: 1, velocity: 1),
+                        NoteOn(channel: 9, note: 1, velocity: 1),
+                        NoteOn(channel: 9, note: 1, velocity: 1),
+                        NoteOn(channel: 9, note: 1, velocity: 1),
+                    ]))
+                }
+                it("can parse real time message correctly") {
+                    expect(timingClocks).to(equal(.init(repeating: TimingClock(), count: 13)))
+                }
+            }
             describe("range") {
                 context("channel maximum") {
                     it("can parse correctly") {
