@@ -492,6 +492,52 @@ class ParserSpec: QuickSpec {
                     ControlChange(channel: 5, controlNumber: ControlNumber(rawValue:    0)!, value:   0),
                 ]))
             }
+            context("when real time message will interrupt") {
+                beforeEach {
+                    // 5 times ControlChange will be interrupt by 13 times "Continue"
+                    let data: [UInt8] = [
+                        0xB5,         // 1st controlChange
+                        0xFB,
+                               1,
+                        0xFB,
+                                   1,
+                        0xFB,
+                        0xB5,         // 2nd controlChange
+                        0xFB,
+                               1,
+                        0xFB,
+                                   1,
+                        0xFB,
+                               1,     // 3rd controlChange (running status)
+                        0xFB,
+                                   1,
+                        0xFB,
+                               1,     // 4th controlChange (running status)
+                        0xFB,
+                                   1,
+                        0xFB,
+                        0xB5,         // 5th controlChange
+                        0xFB,
+                               1,
+                        0xFB,
+                                   1,
+                        0xFB
+                    ]
+                    subject.input(data: data)
+                }
+                it("can parse controlChange correctly") {
+                    expect(controlChanges).to(equal([
+                        ControlChange(channel: 5, controlNumber: .modulationWheel, value: 1),
+                        ControlChange(channel: 5, controlNumber: .modulationWheel, value: 1),
+                        ControlChange(channel: 5, controlNumber: .modulationWheel, value: 1),
+                        ControlChange(channel: 5, controlNumber: .modulationWheel, value: 1),
+                        ControlChange(channel: 5, controlNumber: .modulationWheel, value: 1),
+                    ]))
+                }
+                it("can parse real time message correctly") {
+                    expect(continues).to(equal(.init(repeating: Continue(), count: 13)))
+                }
+            }
             describe("range") {
                 context("channel maximum") {
                     it("can parse correctly") {
