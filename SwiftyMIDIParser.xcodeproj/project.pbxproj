@@ -31,6 +31,7 @@
 		2A37D26E2348E94300DF807A /* ActiveSensing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D26D2348E94300DF807A /* ActiveSensing.swift */; };
 		2A37D2702348E96200DF807A /* SystemReset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D26F2348E96200DF807A /* SystemReset.swift */; };
 		2A37D2722349ECF700DF807A /* StatusTypeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D2712349ECF700DF807A /* StatusTypeSpec.swift */; };
+		2A37D2742349F91400DF807A /* NotifierSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D2732349F91400DF807A /* NotifierSpec.swift */; };
 		2AB134AE234742CB005D79A5 /* SwiftyMIDIParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */; };
 		2AB134B5234742CB005D79A5 /* SwiftyMIDIParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2AB134D223479913005D79A5 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB134D023479913005D79A5 /* Nimble.framework */; };
@@ -107,6 +108,7 @@
 		2A37D26D2348E94300DF807A /* ActiveSensing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSensing.swift; sourceTree = "<group>"; };
 		2A37D26F2348E96200DF807A /* SystemReset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemReset.swift; sourceTree = "<group>"; };
 		2A37D2712349ECF700DF807A /* StatusTypeSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTypeSpec.swift; sourceTree = "<group>"; };
+		2A37D2732349F91400DF807A /* NotifierSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifierSpec.swift; sourceTree = "<group>"; };
 		2AB134A4234742CB005D79A5 /* SwiftyMIDIParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyMIDIParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB134A7234742CB005D79A5 /* SwiftyMIDIParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyMIDIParser.h; sourceTree = "<group>"; };
 		2AB134A8234742CB005D79A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				2A180EBD23489AF000ED29EA /* PitchBendChangeSpec.swift */,
 				2AC9056D2348A73700EDAEDC /* TimeCodeQuarterFrameMessageTypeSpec.swift */,
 				2A37D2712349ECF700DF807A /* StatusTypeSpec.swift */,
+				2A37D2732349F91400DF807A /* NotifierSpec.swift */,
 			);
 			path = SwiftyMIDIParserTests;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 			files = (
 				2A37D2722349ECF700DF807A /* StatusTypeSpec.swift in Sources */,
 				2AC9056E2348A73700EDAEDC /* TimeCodeQuarterFrameMessageTypeSpec.swift in Sources */,
+				2A37D2742349F91400DF807A /* NotifierSpec.swift in Sources */,
 				2A180EBE23489AF000ED29EA /* PitchBendChangeSpec.swift in Sources */,
 				2AB134E62347AC1A005D79A5 /* ParserSpec.swift in Sources */,
 			);

@@ -33,9 +33,13 @@ public class Notifier {
     public var systemExclusive: ((SystemExclusive) -> Void)?
 
     func notify(messageData: [UInt8]) {
+        guard !messageData.isEmpty else {
+            fatalError("messageData is empty")
+        }
         guard let status = StatusType.fromByte(messageData[0]) else {
             fatalError("Invalid message data.")
         }
+        
         switch status {
             
         case .noteOn:
