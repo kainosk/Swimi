@@ -15,7 +15,7 @@ public struct SongPositionPointer: Equatable {
     /// MSB
     public var msb: UInt8
     
-    static func fromData(_ data: [UInt8]) -> Self {
+    static func fromData(_ data: [UInt8]) -> SongPositionPointer {
         assert(data.count == 3)
         return SongPositionPointer(lsb: data[1], msb: data[2])
     }

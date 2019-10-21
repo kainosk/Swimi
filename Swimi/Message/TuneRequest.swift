@@ -10,7 +10,7 @@ import Foundation
 
 public struct TuneRequest: Equatable {
     
-    static func fromData(_ data: [UInt8]) -> Self {
+    static func fromData(_ data: [UInt8]) -> TuneRequest {
         assert(data.count == 1)
         return TuneRequest()
     }

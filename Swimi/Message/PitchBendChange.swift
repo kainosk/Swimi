@@ -23,7 +23,7 @@ public struct PitchBendChange: Equatable {
         return (Int(lsb) & 0x7F) + ((Int(msb & 0x7F) << 7))
     }
     
-    static func fromData(_ data: [UInt8]) -> Self {
+    static func fromData(_ data: [UInt8]) -> PitchBendChange {
         assert(data.count == 3)
         return PitchBendChange(
             channel: Int(data[0] & 0x0F),

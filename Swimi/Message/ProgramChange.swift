@@ -15,7 +15,7 @@ public struct ProgramChange: Equatable {
     /// Program Number: 0 ~ 127
     public var program: Int
     
-    static func fromData(_ data: [UInt8]) -> Self {
+    static func fromData(_ data: [UInt8]) -> ProgramChange {
         assert(data.count == 2)
         return ProgramChange(
             channel: Int(data[0] & 0x0F),

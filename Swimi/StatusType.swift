@@ -109,7 +109,7 @@ public enum StatusType: CaseIterable {
         }
     }
     
-    static func fromByte(_ byte: UInt8) -> Self? {
+    static func fromByte(_ byte: UInt8) -> StatusType? {
         switch byte {
         case 0x80...0x8F:
             return .noteOff

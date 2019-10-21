@@ -18,7 +18,7 @@ public enum TimeCodeQuarterFrameMessageType: UInt8 {
     case timeCountLower4bit = 6
     case timeCountUpper4bit = 7
     
-    static func fromByte(_ byte: UInt8) -> Self {
+    static func fromByte(_ byte: UInt8) -> TimeCodeQuarterFrameMessageType {
         let value = (byte >> 4) & 0b0111
         return TimeCodeQuarterFrameMessageType(rawValue: value)!
     }

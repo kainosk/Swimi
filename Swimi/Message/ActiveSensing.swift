@@ -10,7 +10,7 @@ import Foundation
 
 public struct ActiveSensing: Equatable {
     
-    static func fromData(_ data: [UInt8]) -> Self {
+    static func fromData(_ data: [UInt8]) -> ActiveSensing {
         assert(data.count == 1)
         return ActiveSensing()
     }

@@ -18,7 +18,7 @@ public struct PolyphonicKeyPressure: Equatable {
     /// Pressure: 0 ~ 127
     public var pressure: Int
     
-    static func fromData(_ data: [UInt8]) -> Self {
+    static func fromData(_ data: [UInt8]) -> PolyphonicKeyPressure {
         assert(data.count == 3)
         return PolyphonicKeyPressure(
             channel: Int(data[0] & 0x0F),
