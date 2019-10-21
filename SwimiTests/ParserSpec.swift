@@ -1832,5 +1832,27 @@ class ParserSpec: QuickSpec {
                 }
             }
         }
+        
+        // MARK: Error Cases
+        describe("error cases") {
+            context("when input NoteOn between one SysEx") {
+                // Actually, this behavior is not only about NoteOn.
+                // This test case describes that the parser should performe this
+                // behavior for all non-realtime messages.
+                beforeEach {
+                    subject.input(data: [0xF0])
+                    subject.input(data: [0x90, 0x7F, 0x7F])
+                    subject.input(data: [0xF7])
+                }
+                it("parses NoteOn correctly") {
+                    expect(noteOns).to(equal([
+                        NoteOn(channel: 0, note: 0x7F, velocity: 0x7F)
+                        ]))
+                }
+                it("ignores SysEx") {
+                    expect(systemExclusives).to(haveCount(0))
+                }
+            }
+        }
     }
 }

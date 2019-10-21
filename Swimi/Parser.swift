@@ -39,6 +39,13 @@ public class Parser {
             parsingData.append(byte)
             notifier.notify(messageData: parsingData)
             clearData()
+            return
+        case (_, .some(_), .some(.endOfExclusive)):
+            // error case:
+            // End Of Exclusive received but not parsing System Exclusive now.
+            // We will just ignore this.
+            clearData()
+            return
             
         case (true, nil, _):
             // impossible condition
