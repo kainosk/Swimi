@@ -10,7 +10,7 @@ import Foundation
 
 public struct Continue: Equatable {
     
-    static func fromData(_ data: [UInt8]) -> Self {
+    static func fromData(_ data: [UInt8]) -> Continue {
         assert(data.count == 1)
         return Continue()
     }

@@ -10,7 +10,7 @@ import Foundation
 
 public struct Stop: Equatable {
     
-    static func fromData(_ data: [UInt8]) -> Self {
+    static func fromData(_ data: [UInt8]) -> Stop {
         assert(data.count == 1)
         return Stop()
     }

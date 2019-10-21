@@ -10,7 +10,7 @@ import Foundation
 
 public struct UndefinedSystemCommonMessage1: Equatable {
     
-    static func fromData(_ data: [UInt8]) -> Self {
+    static func fromData(_ data: [UInt8]) -> UndefinedSystemCommonMessage1 {
         return UndefinedSystemCommonMessage1()
     }
 }

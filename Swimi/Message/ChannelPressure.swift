@@ -15,7 +15,7 @@ public struct ChannelPressure: Equatable {
     /// Pressure: 0 ~ 127
     public var pressure: Int
     
-    static func fromData(_ data: [UInt8]) -> Self {
+    static func fromData(_ data: [UInt8]) -> ChannelPressure {
         assert(data.count == 2)
         return ChannelPressure(
             channel: Int(data[0] & 0x0F),

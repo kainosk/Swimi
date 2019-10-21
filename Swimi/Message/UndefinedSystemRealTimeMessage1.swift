@@ -10,7 +10,7 @@ import Foundation
 
 public struct UndefinedSystemRealTimeMessage1: Equatable {
     
-    static func fromData(_ data: [UInt8]) -> Self {
+    static func fromData(_ data: [UInt8]) -> UndefinedSystemRealTimeMessage1 {
         return UndefinedSystemRealTimeMessage1()
     }
 }

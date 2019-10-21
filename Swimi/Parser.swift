@@ -34,7 +34,7 @@ public class Parser {
         }
         
         switch (parsing, lastStatus, statusOrNil) {
-        case (true, .systemExclusive, .endOfExclusive):
+        case (true, .some(.systemExclusive), .some(.endOfExclusive)):
             // parsing exclusive and receive end of exclusive -> notify
             parsingData.append(byte)
             notifier.notify(messageData: parsingData)

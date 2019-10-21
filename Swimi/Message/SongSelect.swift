@@ -12,7 +12,7 @@ public struct SongSelect: Equatable {
     /// Song Number: 0 ~ 127
     public var songNumber: UInt8
     
-    static func fromData(_ data: [UInt8]) -> Self {
+    static func fromData(_ data: [UInt8]) -> SongSelect {
         assert(data.count == 2)
         return SongSelect(songNumber: data[1] & 0x7F)
     }

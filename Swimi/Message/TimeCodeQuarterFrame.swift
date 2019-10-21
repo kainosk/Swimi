@@ -15,7 +15,7 @@ public struct TimeCodeQuarterFrame: Equatable {
     /// Value: 0 ~ 15
     public var value: UInt8
     
-    static func fromData(_ data: [UInt8]) -> Self {
+    static func fromData(_ data: [UInt8]) -> TimeCodeQuarterFrame {
         assert(data.count == 2)
         return TimeCodeQuarterFrame(
             messageType: .fromByte(data[1]),

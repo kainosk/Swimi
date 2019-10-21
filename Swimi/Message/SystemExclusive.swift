@@ -14,7 +14,7 @@ public struct SystemExclusive: Equatable {
     /// This data includes  `F0` as first element and  `F7` as last element.
     public var rawData: [UInt8]
     
-    static func fromData(_ data: [UInt8]) -> Self {
+    static func fromData(_ data: [UInt8]) -> SystemExclusive {
         return SystemExclusive(rawData: data)
     }
 }
