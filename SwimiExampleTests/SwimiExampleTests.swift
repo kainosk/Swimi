@@ -2,7 +2,7 @@
 //  SwimiExampleTests.swift
 //  SwimiExampleTests
 //
-//  Created by kai on 2019/10/07.
+//  Created by Kainosuke OBATA on 2019/10/07.
 //  Copyright © 2019 kai. All rights reserved.
 //
 
