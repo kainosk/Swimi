@@ -2,7 +2,7 @@
 //  Swimi.h
 //  Swimi
 //
-//  Created by kai on 2019/10/04.
+//  Created by Kainosuke OBATA on 2019/10/04.
 //  Copyright © 2019 kai. All rights reserved.
 //
 
