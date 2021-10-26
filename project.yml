@@ -4,19 +4,23 @@ options:
 targets:
   Swimi:
     type: framework
-    platform: iOS
-    deploymentTarget: "12.0"
+    platform: [iOS, macOS]
+    deploymentTarget:
+      - iOS: 12.0
+      - macOS: 11.5
     sources: [Swimi]
     scheme:
       testTargets:
-        - SwimiTests
+        - SwimiTests_${platform}
       gatherCoverageData: true
   SwimiTests:
     type: bundle.unit-test
-    platform: iOS
-    deploymentTarget: "12.0"
+    platform: [iOS, macOS]
+    deploymentTarget:
+      - iOS: 12.0
+      - macOS: 11.5
     sources: [SwimiTests]
     dependencies:
-      - target: Swimi
-      - carthage: Quick
-      - carthage: Nimble
+      - target: Swimi_${platform}
+      - framework: Carthage/Build/Quick.xcframework
+      - framework: Carthage/Build/Nimble.xcframework
