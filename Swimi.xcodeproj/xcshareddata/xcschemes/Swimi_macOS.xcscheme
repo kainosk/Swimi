@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1020"
+   LastUpgradeVersion = "1200"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
-      buildImplicitDependencies = "YES">
+      buildImplicitDependencies = "YES"
+      runPostActionsOnFailure = "NO">
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -14,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1E50B6ECBBFE51F1BCCBD242"
+               BlueprintIdentifier = "335C17461751833E4C1521E0"
                BuildableName = "Swimi.framework"
-               BlueprintName = "Swimi"
+               BlueprintName = "Swimi_macOS"
                ReferencedContainer = "container:Swimi.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,9 +35,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F9EC7F15D6CA8AE020B7DD9E"
+               BlueprintIdentifier = "F9382D93D4BD93ABD706AC88"
                BuildableName = "SwimiTests.xctest"
-               BlueprintName = "SwimiTests"
+               BlueprintName = "SwimiTests_macOS"
                ReferencedContainer = "container:Swimi.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -44,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E50B6ECBBFE51F1BCCBD242"
+            BlueprintIdentifier = "335C17461751833E4C1521E0"
             BuildableName = "Swimi.framework"
-            BlueprintName = "Swimi"
+            BlueprintName = "Swimi_macOS"
             ReferencedContainer = "container:Swimi.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,9 +67,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E50B6ECBBFE51F1BCCBD242"
+            BlueprintIdentifier = "335C17461751833E4C1521E0"
             BuildableName = "Swimi.framework"
-            BlueprintName = "Swimi"
+            BlueprintName = "Swimi_macOS"
             ReferencedContainer = "container:Swimi.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -85,9 +86,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E50B6ECBBFE51F1BCCBD242"
+            BlueprintIdentifier = "335C17461751833E4C1521E0"
             BuildableName = "Swimi.framework"
-            BlueprintName = "Swimi"
+            BlueprintName = "Swimi_macOS"
             ReferencedContainer = "container:Swimi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
