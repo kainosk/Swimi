@@ -6,8 +6,8 @@ targets:
     type: framework
     platform: [iOS, macOS]
     deploymentTarget:
-      - iOS: 12.0
-      - macOS: 11.5
+      iOS: "12.0"
+      macOS: "11.5"
     sources: [Swimi]
     scheme:
       testTargets:
@@ -17,8 +17,8 @@ targets:
     type: bundle.unit-test
     platform: [iOS, macOS]
     deploymentTarget:
-      - iOS: 12.0
-      - macOS: 11.5
+      iOS: "12.0"
+      macOS: "11.5"
     sources: [SwimiTests]
     dependencies:
       - target: Swimi_${platform}

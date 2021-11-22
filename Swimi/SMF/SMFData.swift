@@ -19,7 +19,6 @@ public struct SMFData<SSType: SequencerSpecific>: Parsing, Equatable {
         var chunks: [Chunk<SSType>] = []
         
         while_break: while true {
-            print("loop")
             let result = Chunk<SSType>.parse(bytes)
             guard bytes.count > 0 else { break }
             switch result {
