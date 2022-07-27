@@ -1921,6 +1921,27 @@ class ParserSpec: QuickSpec {
                     ]))
                 }
             }
+            context("when input corrupted (head dropped) SyEx") {
+                beforeEach {
+                    subject.input(data: [
+                        // Corrupted SysEx
+                        // last '247 (0xF7)' is EndOfExclusive
+                        // but there is no '0xF0' SystemExclusive status byte.
+                        114, 97, 0, 110, 103, 101, 109, 101, 110, 116, 0, 115, 47, 67,
+                        108, 97, 115, 115, 0, 105, 99, 48, 49, 46, 83, 48, 0, 48, 48, 46,
+                        109, 105, 100, 247,
+                        
+                        // Simple, NoteOn
+                        0x90, 0x7F, 0x7F,
+                    ])
+                    
+                }
+                it("ignore them then parse next data correctly") {
+                    expect(parsedEvents) == [
+                        .noteOn(channel: 0, note: 0x7F, velocity: 0x7F)
+                    ]
+                }
+            }
         }
     }
 }
