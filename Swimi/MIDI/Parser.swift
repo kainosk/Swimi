@@ -40,7 +40,7 @@ public class Parser {
             notifier.notify(messageData: parsingData)
             clearData()
             return
-        case (_, .some(_), .some(.endOfExclusive)):
+        case (_, _, .some(.endOfExclusive)):
             // error case:
             // End Of Exclusive received but not parsing System Exclusive now.
             // We will just ignore this.
